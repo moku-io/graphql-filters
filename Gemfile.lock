@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    graphql-filters (0.0.0.pre.0)
+    graphql-filters (0.1.0)
       active_record_extended
       activesupport
       graphql
