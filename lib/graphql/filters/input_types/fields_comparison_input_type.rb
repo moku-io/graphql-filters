@@ -19,7 +19,7 @@ module GraphQL
               argument field_object.name,
                        ComparisonInputType[type],
                        required: false,
-                       prepare: lambda {|field_comparator, _context|
+                       prepare: lambda { |field_comparator, _context|
                          lambda { |scope|
                            field_comparator.call(scope, field_object.name)
                          }
@@ -28,7 +28,7 @@ module GraphQL
 
             def prepare
               lambda do |scope|
-                values.reduce(scope) do |acc, val|
+                values.reduce scope do |acc, val|
                   val.call acc
                 end
               end
