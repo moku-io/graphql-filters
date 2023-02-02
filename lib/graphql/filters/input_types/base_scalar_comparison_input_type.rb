@@ -1,5 +1,4 @@
 require 'active_support/core_ext/hash/reverse_merge'
-require 'graphql/type_kinds'
 
 module GraphQL
   module Filters

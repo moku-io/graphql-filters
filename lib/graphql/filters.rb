@@ -1,6 +1,6 @@
 require 'active_support/configurable'
 require 'active_support/core_ext/module/delegation'
-require 'graphql/schema/input_object'
+require 'graphql'
 require_relative 'filters/version'
 require_relative 'filters/utility/cached_class'
 

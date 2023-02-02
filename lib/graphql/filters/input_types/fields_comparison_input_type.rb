@@ -1,4 +1,3 @@
-require 'graphql/type_kinds'
 require_relative 'comparison_input_type'
 
 module GraphQL

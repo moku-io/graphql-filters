@@ -1,5 +1,3 @@
-require 'graphql/type_kinds'
-
 module GraphQL
   module Filters
     module InputTypes
