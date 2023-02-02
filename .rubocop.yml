@@ -1,0 +1,1633 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'spec/support/fixtures/**/*'
+
+## Bundler ##
+
+# A Gem’s requirements should be listed only once in a Gemfile.
+# Bundler/DuplicatedGem
+
+# Each gem in the Gemfile should have a comment explaining its purpose in the project, or the reason for its version or source.
+# Bundler/GemComment
+
+# This cop verifies that a project contains Gemfile or gems.rb file and correct associated lock file based on the configuration.
+# Bundler/GemFilename
+
+# Enforce that Gem version specifications or a commit reference (branch, ref, or tag) are either required or forbidden.
+# Bundler/GemVersion
+
+# Passing symbol arguments to source (e.g. source :rubygems) is deprecated because they default to using HTTP requests. Instead, specify 'https://rubygems.org' if possible, or 'http://rubygems.org' if not.
+# Bundler/InsecureProtocolSource
+
+# Gems should be alphabetically sorted within groups.
+# Bundler/OrderedGems
+
+##################
+
+## Gemspec ##
+
+# This cop checks that date = is not used in gemspec file. It is set automatically when the gem is packaged.
+Gemspec/DeprecatedAttributeAssignment:
+  Enabled: true
+
+# An attribute assignment method calls should be listed only once in a gemspec.
+# Gemspec/DuplicatedAssignment
+
+# Dependencies in the gemspec should be alphabetically sorted.
+# Gemspec/OrderedDependencies
+
+# Requires a gemspec to have rubygems_mfa_required metadata set.
+# Gemspec/RequireMFA
+
+# Checks that required_ruby_version in a gemspec file is set to a valid value (non-blank) and matches TargetRubyVersion as set in RuboCop’s configuration for the gem.
+# Gemspec/RequiredRubyVersion
+
+# Checks that RUBY_VERSION constant is not used in gemspec. Using RUBY_VERSION is dangerous because value of the constant is determined by rake release. It’s possible to have dependency based on ruby version used to execute rake release and not user’s ruby version.
+# Gemspec/RubyVersionGlobalsUsage
+
+##################
+
+## Layout ##
+
+# Bare access modifiers (those not applying to specific methods) should be indented as deep as method definitions,
+# or as deep as the class/module keyword, depending on configuration.
+Layout/AccessModifierIndentation:
+  EnforcedStyle: outdent
+
+# Here we check if the arguments on a multi-line method definition are aligned.
+# Layout/ArgumentAlignment
+
+# Here we check if the elements of a multi-line array literal are aligned.
+# Layout/ArrayAlignment
+
+# This cop checks the indentation of the first line of the right-hand-side of a multi-line assignment.
+# Layout/AssignmentIndentation
+
+# This cop checks whether the end keyword of begin is aligned properly.
+Layout/BeginEndAlignment:
+  EnforcedStyleAlignWith: begin
+
+# This cop checks whether the end keywords are aligned properly for do end blocks.
+Layout/BlockAlignment:
+  EnforcedStyleAlignWith: start_of_block
+
+# This cop checks whether the end statement of a do..end block is on its own line.
+# Layout/BlockEndNewline
+
+# This cop checks how the when and in`s of a `case expression are indented in relation to its case or end keyword.
+# Layout/CaseIndentation
+
+# Checks if the code style follows the ExpectedOrder configuration.
+# Layout/ClassStructure
+
+# Checks the indentation of here document closings.
+# Layout/ClosingHeredocIndentation
+
+# This cop checks the indentation of hanging closing parentheses in method calls,
+# method definitions, and grouped expressions. A hanging closing parenthesis means ) preceded by a line break.
+# Layout/ClosingParenthesisIndentation
+
+# This cop checks the indentation of comments.
+Layout/CommentIndentation:
+  AllowForAlignment: true
+
+# This cop checks for conditions that are not on the same line as if/while/until.
+# Layout/ConditionPosition
+
+# This cop checks whether the end keywords of method definitions are aligned properly.
+# Layout/DefEndAlignment
+
+# This cop checks the . position in multi-line method calls.
+# Layout/DotPosition
+
+# This cop checks the alignment of else keywords.
+# Layout/ElseAlignment
+
+# This cop checks empty comment.
+# Layout/EmptyComment
+
+# This cop enforces empty line after guard clause.
+# Layout/EmptyLineAfterGuardClause
+
+# Checks for a newline after the final magic comment.
+# Layout/EmptyLineAfterMagicComment
+
+# This cop enforces empty line after multiline condition.
+Layout/EmptyLineAfterMultilineCondition:
+  Enabled: true
+
+# This cop checks whether class/module/method definitions are separated by one or more empty lines.
+# Layout/EmptyLineBetweenDefs
+
+# This cop checks for two or more consecutive blank lines.
+# Layout/EmptyLines
+
+# Access modifiers should be surrounded by blank lines.
+# Layout/EmptyLinesAroundAccessModifier
+
+# This cop checks if empty lines exist around the arguments of a method invocation.
+# Layout/EmptyLinesAroundArguments
+
+# Checks for a newline after an attribute accessor or a group of them.
+# Layout/EmptyLinesAroundAttributeAccessor
+
+# This cop checks if empty lines exist around the bodies of begin-end blocks.
+# Layout/EmptyLinesAroundBeginBody
+
+# This cop checks if empty lines around the bodies of blocks match the configuration.
+# Layout/EmptyLinesAroundBlockBody
+
+# This cop checks if empty lines around the bodies of classes match the configuration.
+# Layout/EmptyLinesAroundClassBody
+
+# This cop checks if empty lines exist around the bodies of begin sections.
+# This checks rescue/else/ensure clauses in begin blocks.
+# Layout/EmptyLinesAroundExceptionHandlingKeywords
+
+# This cop checks if empty lines exist around the bodies of methods.
+# Layout/EmptyLinesAroundMethodBody
+
+# This cop checks if empty lines around the bodies of modules match the configuration.
+# Layout/EmptyLinesAroundModuleBody
+
+# This cop checks whether the end keywords are aligned properly.
+# Layout/EndAlignment
+
+# This cop checks for Windows-style line endings in the source code.
+Layout/EndOfLine:
+  EnforcedStyle: lf
+
+# This cop checks for extra/unnecessary whitespace.
+Layout/ExtraSpacing:
+  AllowForAlignment: true
+  AllowBeforeTrailingComments: true
+
+# This cop checks the indentation of the first argument in a method call.
+# Layout/FirstArgumentIndentation
+
+# This cop checks the indentation of the first element in an array literal where the opening bracket
+# and the first element are on separate lines.
+# Layout/FirstArrayElementIndentation
+
+# This cop checks for a line break before the first element in a multi-line array.
+# Layout/FirstArrayElementLineBreak
+
+# This cop checks the indentation of the first key in a hash literal where the opening brace
+# and the first key are on separate lines.
+# Layout/FirstHashElementIndentation
+
+# This cop checks for a line break before the first element in a multi-line hash.
+# Layout/FirstHashElementLineBreak
+
+# This cop checks for a line break before the first argument in a multi-line method call.
+# Layout/FirstMethodArgumentLineBreak
+
+# This cop checks for a line break before the first parameter in a multi-line method parameter definition.
+# Layout/FirstMethodParameterLineBreak
+
+# This cop checks the indentation of the first parameter in a method definition.
+# Layout/FirstParameterIndentation
+
+# Check that the keys, separators, and values of a multi-line hash literal are aligned according to configuration.
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+  EnforcedLastArgumentHashStyle: ignore_implicit
+
+# This cop checks for the placement of the closing parenthesis in a method call that passes a HEREDOC string as an argument.
+# Layout/HeredocArgumentClosingParenthesis
+
+# This cop checks the indentation of the here document bodies.
+# Layout/HeredocIndentation
+
+# This cop checks for inconsistent indentation.
+# Layout/IndentationConsistency
+
+# This cop checks that the indentation method is consistent. Either tabs only or spaces only are used for indentation.
+# Layout/IndentationStyle
+
+# This cop checks for indentation that doesn’t use the specified number of spaces.
+# Layout/IndentationWidth
+
+# This cop checks for indentation of the first non-blank non-comment line in a file.
+# Layout/InitialIndentation
+
+# This cop checks whether comments have a leading space after # the denoting the start of the comment.
+# Layout/LeadingCommentSpace
+
+# This cop checks for unnecessary leading blank lines at the beginning of a file.
+# Layout/LeadingEmptyLines
+
+# This cop checks the indentation of the next line after a line that ends with a string literal and a backslash.
+Layout/LineEndStringConcatenationIndentation:
+  Enabled: true
+
+# This cop checks the length of lines in the source code.
+# Layout/LineLength
+
+# This cop checks that the closing brace in an array literal is either on the same line as the last array element or on a new line.
+# Layout/MultilineArrayBraceLayout
+
+# This cop ensures that each item in a multi-line array starts on a separate line.
+Layout/MultilineArrayLineBreaks:
+  Enabled: true
+
+# This cop checks whether the multiline assignments have a newline after the assignment operator.
+Layout/MultilineAssignmentLayout:
+  Enabled: true
+  EnforcedStyle: same_line
+
+# This cop checks whether the multiline do end blocks have a newline after the start of the block.
+# Layout/MultilineBlockLayout
+
+# This cop checks that the closing brace in a hash literal is either on the same line as the last hash element, or a new line.
+# Layout/MultilineHashBraceLayout
+
+# This cop ensures that each key in a multi-line hash starts on a separate line.
+Layout/MultilineHashKeyLineBreaks:
+  Enabled: true
+
+# This cop ensures that each argument in a multi-line method call starts on a separate line.
+Layout/MultilineMethodArgumentLineBreaks:
+  Enabled: true
+
+# This cop checks that the closing brace in a method call is either on the same line as the last method argument, or a new line.
+# Layout/MultilineMethodCallBraceLayout
+
+# This cop checks the indentation of the method name part in method calls that span more than one line.
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+# This cop checks that the closing brace in a method definition is either on the same line as the last method parameter, or a new line.
+# Layout/MultilineMethodDefinitionBraceLayout
+
+# This cop checks the indentation of the right hand side operand in binary operations that span more than one line.
+# Layout/MultilineOperationIndentation
+
+# Here we check if the parameters on a multi-line method call or definition are aligned.
+# Layout/ParameterAlignment
+
+# This cop checks whether certain expressions, e.g. method calls, that could fit completely on a single line,
+# are broken up into multiple lines unnecessarily.
+# Layout/RedundantLineBreak
+
+# This cop checks whether the rescue and ensure keywords are aligned properly.
+# Layout/RescueEnsureAlignment
+
+# This cop checks if method calls are chained onto single line blocks. It considers that a line break before the dot improves the readability of the code.
+Layout/SingleLineBlockChain:
+  Enabled: true
+
+# Checks for colon (:) not followed by some kind of space.
+# Layout/SpaceAfterColon
+
+# Checks for comma (,) not followed by some kind of space.
+# Layout/SpaceAfterComma
+
+# Checks for space between a method name and a left parenthesis in defs.
+# Layout/SpaceAfterMethodName
+
+# This cop checks for space after !.
+# Layout/SpaceAfterNot
+
+# Checks for semicolon (;) not followed by some kind of space.
+# Layout/SpaceAfterSemicolon
+
+# Checks the spacing inside and after block parameters pipes.
+# Layout/SpaceAroundBlockParameters
+
+# Checks that the equals signs in parameter default assignments have or don’t have surrounding space depending on configuration.
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+# Checks the spacing around the keywords.
+# Layout/SpaceAroundKeyword
+
+# Checks method call operators to not have spaces around them.
+# Layout/SpaceAroundMethodCallOperator
+
+# Checks that operators have space around them, except for ** which should or shouldn’t have surrounding space depending on configuration.
+Layout/SpaceAroundOperators:
+  EnforcedStyleForExponentOperator: space
+
+# Checks that block braces have or don’t have a space before the opening brace depending on configuration.
+# Layout/SpaceBeforeBlockBraces
+
+# Checks for space between the name of a receiver and a left brackets.
+Layout/SpaceBeforeBrackets:
+  Enabled: true
+
+# Checks for comma (,) preceded by space.
+# Layout/SpaceBeforeComma
+
+# This cop checks for missing space between a token and a comment on the same line.
+# Layout/SpaceBeforeComment
+
+# Checks that exactly one space is used between a method name and the first argument for method calls without parentheses.
+# Layout/SpaceBeforeFirstArg
+
+# Checks for semicolon (;) preceded by space.
+# Layout/SpaceBeforeSemicolon
+
+# This cop checks for spaces between → and opening parameter parenthesis (() in lambda literals.
+# Layout/SpaceInLambdaLiteral
+
+# Checks that brackets used for array literals have or don’t have surrounding space depending on configuration.
+# Layout/SpaceInsideArrayLiteralBrackets
+
+# Checks for unnecessary additional spaces inside array percent literals (i.e. %i/%w).
+# Layout/SpaceInsideArrayPercentLiteral
+
+# Checks that block braces have or don’t have surrounding space inside them on configuration.
+# Layout/SpaceInsideBlockBraces
+
+# Checks that braces used for hash literals have or don’t have surrounding space depending on configuration.
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+# Checks for spaces inside ordinary round parentheses.
+# Layout/SpaceInsideParens
+
+# Checks for unnecessary additional spaces inside the delimiters of %i/%w/%x literals.
+# Layout/SpaceInsidePercentLiteralDelimiters
+
+# Checks for spaces inside range literals.
+# Layout/SpaceInsideRangeLiteral
+
+# Checks that reference brackets have or don’t have surrounding space depending on configuration.
+# Layout/SpaceInsideReferenceBrackets
+
+# This cop checks for whitespace within string interpolations.
+# Layout/SpaceInsideStringInterpolation
+
+# This cop looks for trailing blank lines and a final newline in the source code.
+# Layout/TrailingEmptyLines
+
+# This cop looks for trailing whitespace in the source code.
+Layout/TrailingWhitespace:
+  AllowInHeredoc: true
+
+##################
+
+## Lint ##
+
+# This cop checks for mistyped shorthand assignments.
+Lint/AmbiguousAssignment:
+  Enabled: true
+
+# This cop checks for ambiguous block association with method when param passed without parentheses.
+# Lint/AmbiguousBlockAssociation
+
+# This cop checks for ambiguous operators in the first argument of a method invocation without parentheses.
+# Lint/AmbiguousOperator
+
+# This cop looks for expressions containing multiple binary operators where precedence is ambiguous due to lack of parentheses.
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: true
+
+# This cop checks for ambiguous ranges.
+Lint/AmbiguousRange:
+  Enabled: true
+  RequireParenthesesForMethodChains: true
+
+# This cop checks for ambiguous regexp literals in the first argument of a method invocation without parentheses.
+# Lint/AmbiguousRegexpLiteral
+
+# This cop checks for assignments in the conditions of if/while/until.
+Lint/AssignmentInCondition:
+  AllowSafeAssignment: false # Severo ma giusto.
+
+# BigDecimal.new() is deprecated since BigDecimal 1.3.3.
+# This cop identifies places where BigDecimal.new() can be replaced by BigDecimal().
+# Lint/BigDecimalNew
+
+# This cop checks for places where binary operator has identical operands.
+# Lint/BinaryOperatorWithIdenticalOperands
+
+# This cop checks for :true and :false symbols. In most cases it would be a typo.
+# Lint/BooleanSymbol
+
+# This cop checks for circular argument references in optional keyword arguments and optional ordinal arguments.
+# Lint/CircularArgumentReference
+
+# Do not define constants within a block, since the block’s scope does not isolate or namespace the constant in any way.
+# Lint/ConstantDefinitionInBlock
+
+# Check that certain constants are fully qualified.
+# Lint/ConstantResolution
+
+# This cop checks for debug calls (such as debugger or binding.pry) that should not be kept for production code.
+# Lint/Debugger
+
+# This cop checks for uses of the deprecated class method usages.
+# Lint/DeprecatedClassMethods
+
+# This cop checks for deprecated constants.
+Lint/DeprecatedConstants:
+  Enabled: true
+
+# Algorithmic constants for OpenSSL::Cipher and OpenSSL::Digest deprecated since OpenSSL version 2.2.0.
+# Lint/DeprecatedOpenSSLConstant
+
+# This cop checks constructors for disjunctive assignments (||=) that should be plain assignments.
+# So far, this cop is only concerned with disjunctive assignment of instance variables.
+# Lint/DisjunctiveAssignmentInConstructor
+
+# This cop checks that there are no repeated bodies within if/unless, case-when, case-in and rescue constructs.
+Lint/DuplicateBranch:
+  Enabled: true
+  IgnoreLiteralBranches: true
+  IgnoreConstantBranches: true
+
+# This cop checks that there are no repeated conditions used in case 'when' expressions.
+# Lint/DuplicateCaseCondition
+
+# This cop checks that there are no repeated conditions used in if 'elsif'.
+# Lint/DuplicateElsifCondition
+
+# This cop checks for duplicated keys in hash literals.
+# Lint/DuplicateHashKey
+
+# This cop checks for duplicated instance (or singleton) method definitions.
+# Lint/DuplicateMethods
+
+# This cop checks for duplicate elements in Regexp character classes.
+Lint/DuplicateRegexpCharacterClassElement:
+  Enabled: true
+
+# This cop checks for duplicate `require`s and `require_relative`s.
+# Lint/DuplicateRequire
+
+# This cop checks that there are no repeated exceptions used in 'rescue' expressions.
+# Lint/DuplicateRescueException
+
+# This cop checks if each_with_object is called with an immutable argument.
+# Lint/EachWithObjectArgument
+
+# This cop checks for odd else block layout - like having an expression on the same line as the else keyword, which is usually a mistake.
+# Lint/ElseLayout
+
+# This cop checks for blocks without a body. Such empty blocks are typically an oversight
+# or we should provide a comment to be clearer what we’re aiming for.
+Lint/EmptyBlock:
+  Enabled: true
+
+# This cop checks for classes and metaclasses without a body.
+# Such empty classes and metaclasses are typically an oversight or we should provide a comment to be clearer what we’re aiming for.
+Lint/EmptyClass:
+  Enabled: true
+  AllowComments: true
+
+# This cop checks for the presence of if, elsif and unless branches without a body.
+# Lint/EmptyConditionalBody
+
+# This cop checks for empty ensure blocks
+# Lint/EmptyEnsure
+
+# This cop checks for the presence of empty expressions.
+# Lint/EmptyExpression
+
+# This cop enforces that Ruby source files are not empty.
+# Lint/EmptyFile
+
+# This cop checks for the presence of in pattern branches without a body.
+Lint/EmptyInPattern:
+  Enabled: true
+
+# This cop checks for empty interpolation.
+# Lint/EmptyInterpolation
+
+# This cop checks for the presence of when branches without a body.
+# Lint/EmptyWhen
+
+# This cop checks for return from an ensure block. return from an ensure block is a dangerous code smell as
+# it will take precedence over any exception being raised, and the exception will be silently thrown away as if it were rescued.
+# Lint/EnsureReturn
+
+# This checks for a deprecated use of ERB.new .
+# Lint/ErbNewArguments
+
+# This cop looks for uses of flip-flop operator based on the Ruby Style Guide.
+# Lint/FlipFlop
+
+# This cop checks for the presence of precise comparison of floating point numbers.
+# Lint/FloatComparison
+
+# This cop identifies Float literals which are, like, really really really really really really really really big.
+# Too big. No-one needs Floats that big. If you need a float that big, something is wrong with you.
+# Lint/FloatOutOfRange
+
+# This lint sees if there is a mismatch between the number of expected fields for format/sprintf/#% and what is actually passed as arguments.
+# Lint/FormatParameterMismatch
+
+# Prefer using Hash#compare_by_identity rather than using object_id for hash keys.
+# Lint/HashCompareByIdentity
+
+# This cop checks for the ordering of a method call where the receiver of the call is a HEREDOC.
+Lint/HeredocMethodCallPosition:
+  Enabled: true
+
+# Prefer equal? over == when comparing object_id.
+# Lint/IdentityComparison
+
+# This cop checks for implicit string concatenation of string literals which are on the same line.
+# Lint/ImplicitStringConcatenation
+
+# This cop checks for IO.select that is incompatible with Fiber Scheduler since Ruby 3.0.
+Lint/IncompatibleIoSelectWithFiberScheduler:
+  Enabled: false
+
+# This cop checks for private or protected access modifiers which are applied to a singleton method.
+# These access modifiers do not make singleton methods private/protected. private_class_method can be used for that.
+# Lint/IneffectiveAccessModifier
+
+# This cop looks for error classes inheriting from Exception and its standard library subclasses, excluding subclasses of StandardError.
+# Lint/InheritException
+
+# This cop checks for interpolation in a single quoted string.
+# Lint/InterpolationCheck
+
+# This cop checks uses of lambda without a literal block.
+Lint/LambdaWithoutLiteralBlock:
+  Enabled: true
+
+# This cop checks for literals used as the conditions or as operands in and/or expressions serving as the conditions of if/while/until/case-when/case-in.
+# Lint/LiteralAsCondition
+
+# This cop checks for interpolated literals.
+# Lint/LiteralInInterpolation
+
+# This cop checks for uses of begin…end while/until something.
+# Lint/Loop
+
+# This cop checks that there is an # rubocop:enable … statement after a # rubocop:disable … statement.
+# This will prevent leaving cop disables on wide ranges of code, that latter contributors to a file wouldn’t be aware of.
+# Lint/MissingCopEnableDirective
+
+# This cop checks for the presence of constructors and lifecycle callbacks without calls to super.
+# Lint/MissingSuper
+
+# Do not mix named captures and numbered captures in a Regexp literal because numbered capture is ignored if they’re mixed.
+# Replace numbered captures with non-capturing groupings or named captures.
+# Lint/MixedRegexpCaptureTypes
+
+# In math and Python, we can use x < y < z style comparison to compare multiple value. However, we can’t use the comparison in Ruby.
+# However, the comparison is not syntax error. This cop checks the bad usage of comparison operators.
+# Lint/MultipleComparison
+
+# This cop checks for nested method definitions.
+# Lint/NestedMethodDefinition
+
+# This cop checks for nested percent literals.
+# Lint/NestedPercentLiteral
+
+# Don’t omit the accumulator when calling next in a reduce block.
+# Lint/NextWithoutAccumulator
+
+# Checks for the presence of a return inside a begin..end block in assignment contexts.
+# In this situation, the return will result in an exit from the current method, possibly leading to unexpected behavior.
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: true
+
+# Dir[…] and Dir.glob(…) do not make any guarantees about the order in which files are returned
+# Lint/NonDeterministicRequireOrder
+
+# This cop checks for non-local exits from iterators without a return value.
+# Lint/NonLocalExitFromIterator
+
+# This cop warns the usage of unsafe number conversions.
+# Enable this in the generic project
+# Lint/NumberConversion
+
+# This cop checks for uses of numbered parameter assignment.
+Lint/NumberedParameterAssignment:
+  Enabled: true
+
+# This cop checks for unintended or-assignment to a constant.
+Lint/OrAssignmentToConstant:
+  Enabled: true
+
+# Checks the proper ordering of magic comments and whether a magic comment is not placed before a shebang.
+# Lint/OrderedMagicComments
+
+# This cops looks for references of Regexp captures that are out of range and thus always returns nil.
+# Lint/OutOfRangeRegexpRef
+
+# Checks for space between the name of a called method and a left parenthesis.
+# Lint/ParenthesesAsGroupedExpression
+
+# This cop checks for quotes and commas in %w, e.g. %w('foo', "bar")
+# Lint/PercentStringArray
+
+# This cop checks for colons and commas in %i, e.g. %i(:foo, :bar)
+# Lint/PercentSymbolArray
+
+# This cop checks for raise or fail statements which are raising Exception class.
+# Lint/RaiseException
+
+# This cop checks for rand(1) calls. Such calls always return 0.
+# Lint/RandOne
+
+# This cop detects instances of rubocop:disable comments that can be removed without causing any offenses to be reported.
+# Lint/RedundantCopDisableDirective
+
+# This cop detects instances of rubocop:enable comments that can be removed.
+# Lint/RedundantCopEnableDirective
+
+# Sort globbed results by default in Ruby 3.0. This cop checks for redundant sort method to Dir.glob and Dir[].
+Lint/RedundantDirGlobSort:
+  Enabled: true
+
+# Checks for unnecessary require statement.
+# Lint/RedundantRequireStatement
+
+# This cop checks for redundant safe navigation calls.
+# Lint/RedundantSafeNavigation
+
+# This cop checks for unneeded usages of splat expansion.
+Lint/RedundantSplatExpansion:
+  AllowPercentLiteralArrayArgument: false
+
+# This cop checks for string conversion in string interpolation, which is redundant.
+# Lint/RedundantStringCoercion
+
+# This cop checks for redundant with_index.
+# Lint/RedundantWithIndex
+
+# This cop checks for redundant with_object.
+# Lint/RedundantWithObject
+
+# This cop checks for regexp literals used as match-current-line. If a regexp literal is in condition, the regexp matches $_ implicitly.
+# Lint/RegexpAsCondition
+
+# This cop checks for expressions where there is a call to a predicate method with at least one argument,
+# where no parentheses are used around the parameter list, and a boolean operator, && or ||, is used in the last argument.
+# Lint/RequireParentheses
+
+# Checks for uses a file requiring itself with require_relative.
+Lint/RequireRelativeSelfPath:
+  Enabled: true
+
+# This cop checks for rescue blocks targeting the Exception class.
+# Lint/RescueException
+
+# Check for arguments to rescue that will result in a TypeError if an exception is raised.
+# Lint/RescueType
+
+# This cop checks for the use of a return with a value in a context where the value will be ignored (initialize and setter methods).
+# Lint/ReturnInVoidContext
+
+# The safe navigation operator returns nil if the receiver is nil. If you chain an ordinary method call
+# after a safe navigation operator, it raises NoMethodError. We should use a safe navigation operator after a safe navigation operator.
+# Lint/SafeNavigationChain
+
+# This cop check to make sure that if safe navigation is used for a method call in an && or || condition that
+# safe navigation is used for all method calls on that same object.
+# Lint/SafeNavigationConsistency
+
+# This cop checks to make sure safe navigation isn’t used with empty? in a conditional.
+# Lint/SafeNavigationWithEmpty
+
+# This cop checks if a file which has a shebang line as its first line is granted execute permission.
+# Lint/ScriptPermission
+
+# This cop checks for self-assignments.
+# Lint/SelfAssignment
+
+# This cop checks for send, public_send, and send methods when using mix-in.
+# Lint/SendWithMixinArgument
+
+# This cop checks for shadowed arguments.
+# Lint/ShadowedArgument
+
+# This cop checks for a rescued exception that get shadowed by a less specific exception being rescued before a more specific exception is rescued.
+# Lint/ShadowedException
+
+# This cop checks for the use of local variable names from an outer scope in block arguments or block-local variables.
+# Lint/ShadowingOuterLocalVariable
+
+# This cop checks unexpected overrides of the Struct built-in methods via Struct.new.
+# Lint/StructNewOverride
+
+# This cop checks for rescue blocks with no body.
+# Lint/SuppressedException
+
+# This cop checks for uses of literal strings converted to a symbol where a literal symbol could be used instead.
+Lint/SymbolConversion:
+  Enabled: true
+
+# This cop repacks Parser’s diagnostics/errors into RuboCop’s offenses.
+# Lint/Syntax
+
+# This cop ensures that to_enum/enum_for, called for the current method, has correct arguments.
+Lint/ToEnumArguments:
+  Enabled: true
+
+# This cop checks to make sure #to_json includes an optional argument.
+# Lint/ToJSON
+
+# This cop checks for top level return with arguments. If there is a top-level return statement with an argument, then the argument is always ignored.
+# Lint/TopLevelReturnWithArgument
+
+# This cop checks for trailing commas in attribute declarations, such as #attr_reader.
+# Leaving a trailing comma will nullify the next method definition by overriding it with a getter method.
+# Lint/TrailingCommaInAttributeDeclaration
+
+# This cop checks for "triple quotes" (strings delimited by any odd number of quotes greater than 1).
+Lint/TripleQuotes:
+  Enabled: true
+
+# This cop checks for underscore-prefixed variables that are actually used.
+# Lint/UnderscorePrefixedVariableName
+
+# This cop checks for a block that is known to need more positional block arguments than are given.
+Lint/UnexpectedBlockArity:
+  Enabled: true
+
+# This cop checks for using Fixnum or Bignum constant.
+# Lint/UnifiedInteger
+
+# Looks for reduce or inject blocks where the value returned (implicitly or explicitly) does not include the accumulator.
+Lint/UnmodifiedReduceAccumulator:
+  Enabled: true
+
+# This cop checks for unreachable code.
+# Lint/UnreachableCode
+
+# This cop checks for loops that will have at most one iteration.
+# Lint/UnreachableLoop
+
+# This cop checks for unused block arguments.
+# Lint/UnusedBlockArgument
+
+# This cop checks for unused method arguments.
+# Lint/UnusedMethodArgument
+
+# This cop identifies places where URI.escape can be replaced by CGI.escape, URI.encode_www_form,
+# or URI.encode_www_form_component depending on your specific use case.
+# Also this cop identifies places where URI.unescape can be replaced by CGI.unescape, URI.decode_www_form,
+# or URI.decode_www_form_component depending on your specific use case.
+# Lint/UriEscapeUnescape
+
+# This cop identifies places where URI.regexp is obsolete and should not be used.
+# Lint/UriRegexp
+
+# This cop checks for redundant access modifiers.
+# Lint/UselessAccessModifier
+
+# This cop checks for every useless assignment to local variable in every scope.
+# Lint/UselessAssignment
+
+# This cop checks for useless else in begin..end without rescue.
+# Lint/UselessElseWithoutRescue
+
+# This cop checks for useless method definitions, specifically: empty constructors and methods just delegating to super.
+# Lint/UselessMethodDefinition
+
+# This cop looks for ruby2_keywords calls for methods that do not need it.
+Lint/UselessRuby2Keywords:
+  Enabled: true
+
+# This cop checks for setter call to local variable as the final expression of a function definition.
+# Lint/UselessSetterCall
+
+# This cop checks for uses of Integer#times that will never yield (when the integer ⇐ 0) or that will only ever yield once (1.times).
+# Lint/UselessTimes
+
+# This cop checks for operators, variables, literals, and nonmutating methods used in void context.
+# Lint/Void
+
+##################
+
+## Metrics ##
+
+Metrics:
+  Enabled: false
+
+##################
+
+## Naming ##
+
+# This cop makes sure that accessor methods are named properly. Applies to both instance and class methods.
+# Naming/AccessorMethodName
+
+# This cop checks for non-ascii characters in identifier and constant names.
+# Naming/AsciiIdentifiers
+
+# This cop makes sure that certain binary operator methods have their sole parameter named other.
+# Naming/BinaryOperatorParameterName
+
+# This cop checks block parameter names for how descriptive they are.
+# Naming/BlockParameterName:
+
+# This cop checks for class and module names with an underscore in them.
+# Naming/ClassAndModuleCamelCase
+
+# This cop checks whether constant names are written using SCREAMING_SNAKE_CASE.
+# Naming/ConstantName
+
+# This cop makes sure that Ruby source files have snake_case names.
+# Naming/FileName
+
+# This cop checks that your heredocs are using the configured case.
+# Naming/HeredocDelimiterCase
+
+# This cop checks that your heredocs are using meaningful delimiters.
+# Naming/HeredocDelimiterNaming
+
+# This cops recommends the use of inclusive language instead of problematic terms.
+# Note: really?
+Naming/InclusiveLanguage:
+  Enabled: false
+
+# This cop checks for memoized methods whose instance variable name does not match the method name.
+# Naming/MemoizedInstanceVariableName
+
+# This cop makes sure that all methods use the configured style, snake_case or camelCase, for their names.
+# Naming/MethodName
+
+# This cop checks method parameter names for how descriptive they are. It is highly configurable.
+# Naming/MethodParameterName
+
+# This cop makes sure that predicates are named properly.
+# Naming/PredicateName
+
+# This cop makes sure that rescued exceptions variables are named as expected.
+# Naming/RescuedExceptionsVariableName
+
+# This cop makes sure that all variables use the configured style, snake_case or camelCase, for their names.
+# Naming/VariableName
+
+# This cop makes sure that all numbered variables use the configured style, snake_case, normalcase, or non_integer, for their numbering.
+# Naming/VariableNumber
+
+##################
+
+## Security ##
+
+# This cop checks for the use of Kernel#eval and Binding#eval.
+Security/Eval:
+  Enabled: false
+
+# Checks for the first argument to IO.read, IO.binread, IO.write, IO.binwrite, IO.foreach, and IO.readlines.
+Security/IoMethods:
+  Enabled: true
+
+# This cop checks for the use of JSON class methods which have potential security issues.
+# Security/JSONLoad
+
+# This cop checks for the use of Marshal class methods which have potential security issues leading to remote code execution when loading from an untrusted source.
+# Security/MarshalLoad
+
+# This cop checks for the use of Kernel#open and URI.open with dynamic data.
+# Security/Open
+
+# This cop checks for the use of YAML class methods which have potential security issues leading to remote code execution when loading from an untrusted source.
+# Security/YAMLLoad
+
+##################
+
+## Style ##
+
+# Access modifiers should be declared to apply to a group of methods or inline before each method, depending on configuration.
+# Style/AccessModifierDeclarations
+
+# This cop checks for grouping of accessors in class and module bodies.
+Style/AccessorGrouping:
+  EnforcedStyle: separated
+
+# This cop enforces the use of either #alias or #alias_method depending on configuration.
+# Style/Alias
+
+# This cop checks for uses of and and or, and suggests using && and || instead.
+# Style/AndOr
+
+# This cop identifies places where do_something(*args, &block) can be replaced by do_something(…).
+Style/ArgumentsForwarding:
+  Enabled: false
+
+# This cop enforces the use of Array() instead of explicit Array check or [*var].
+# Style/ArrayCoercion
+
+# This cop checks for uses of "*" as a substitute for join.
+# Style/ArrayJoin
+
+# This cop checks for non-ascii (non-English) characters in comments.
+# Style/AsciiComments
+
+# This cop checks for uses of Module#attr.
+# Style/Attr
+
+# This cop checks for cases when you could use a block accepting version of a method that does automatic resource cleanup.
+Style/AutoResourceCleanup:
+  Enabled: true
+
+# This cop checks if usage of %() or %Q() matches configuration.
+# Style/BarePercentLiterals
+
+# This cop checks for BEGIN blocks.
+# Style/BeginBlock
+
+# This cop checks for places where attr_reader and attr_writer for the same method can be combined into single attr_accessor.
+# Style/BisectedAttrAccessor
+
+# This cop looks for uses of block comments (=begin…=end).
+# Style/BlockComments
+
+# Check for uses of braces or do/end around single line or multi-line blocks.
+# Style/BlockDelimiters
+
+# This cop checks for uses of the case equality operator(===).
+# Style/CaseEquality
+
+# This cop identifies places where if-elsif constructions can be replaced with case-when.
+# Style/CaseLikeIf
+
+# Checks for uses of the character literal ?x.
+# Style/CharacterLiteral
+
+# This cop checks the style of children definitions at classes and modules.
+# Style/ClassAndModuleChildren
+
+# This cop enforces consistent use of Object#is_a? or Object#kind_of?.
+# Style/ClassCheck
+
+# This cop enforces the use of Object#instance_of? instead of class comparison for equality.
+# Style/ClassEqualityComparison
+
+# This cop checks for uses of the class/module name instead of self, when defining class/module methods.
+# Style/ClassMethods
+
+# This cop enforces using def self.method_name or class << self to define class methods.
+# Style/ClassMethodsDefinitions
+
+# This cop checks for uses of class variables.
+# Style/ClassVars
+
+# This cop checks for places where custom logic on rejection nils from arrays and hashes can be replaced with {Array,Hash}#{compact,compact!}.
+Style/CollectionCompact:
+  Enabled: true
+
+# This cop enforces the use of consistent method names from the Enumerable module.
+Style/CollectionMethods:
+  Enabled: true
+
+# This cop checks for methods invoked via the :: operator instead of the . operator (like FileUtils::rmdir instead of FileUtils.rmdir).
+# Style/ColonMethodCall
+
+# This cop checks for class methods that are defined using the :: operator instead of the . operator.
+# Style/ColonMethodDefinition
+
+# This cop checks for places where multiple consecutive loops over the same data can be combined into a single loop. It is very likely that combining them will make the code more efficient and more concise.
+# Style/CombinableLoops
+
+# This cop enforces using ` or %x around command literals.
+# Style/CommandLiteral
+
+# This cop checks that comment annotation keywords are written according to guidelines.
+# Style/CommentAnnotation
+
+# This cop checks for comments put on the same line as some keywords. These keywords are: class, module, def, begin, end.
+# Style/CommentedKeyword
+
+# Check for if and case statements where each branch is used for assignment to the same variable when using the return of the condition can be used instead.
+# Style/ConditionalAssignment
+
+# This cop checks that constants defined in classes and modules have an explicit visibility declaration.
+# Style/ConstantVisibility
+
+# Check that a copyright notice was given in each source file.
+# Style/Copyright
+
+# This cop checks for consistent usage of the DateTime class over the Time class.
+# Style/DateTime
+
+# This cop checks for parentheses in the definition of a method, that does not take any arguments.
+# Style/DefWithParentheses
+
+# This cop checks for places where the #dir method can replace more complex constructs to retrieve a canonicalized absolute path to the current file.
+# Style/Dir
+
+# Detects comments to enable/disable RuboCop. This is useful if want to make sure that every RuboCop error gets fixed and not quickly disabled with a comment.
+# Style/DisableCopsWithinSourceCodeDirective
+
+# When using class_eval (or other eval) with string interpolation, add a comment block showing its appearance if interpolated (a practice used in Rails code).
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+# This cop checks for missing top-level documentation of classes and modules.
+Style/Documentation:
+  Enabled: false
+
+# This cop checks for missing documentation comment for public methods.
+Style/DocumentationMethod:
+  Enabled: false
+
+# Detects double disable comments on one line. This is mostly to catch automatically generated comments that need to be regenerated.
+# Style/DoubleCopDisableDirective
+
+# This cop checks for uses of double negation (!!) to convert something to a boolean value.
+Style/DoubleNegation:
+  EnforcedStyle: forbidden
+
+# This cop checks for loops which iterate a constant number of times, using a Range literal and #each. This can be done more readably using Integer#times.
+# Style/EachForSimpleLoop
+
+# This cop looks for inject / reduce calls where the passed in object is returned at the end and so
+# could be replaced by each_with_object without the need to return the object at the end.
+# Style/EachWithObject
+
+# This cop checks for pipes for empty block parameters. Pipes for empty block parameters do not cause syntax errors, but they are redundant.
+# Style/EmptyBlockParameter
+
+# This cop checks for case statements with an empty condition.
+# Style/EmptyCaseCondition
+
+# Checks for empty else-clauses, possibly including comments and/or an explicit nil depending on the EnforcedStyle.
+# Style/EmptyElse
+
+# This cop checks for parentheses for empty lambda parameters. Parentheses for empty lambda parameters do not cause syntax errors, but they are redundant.
+# Style/EmptyLambdaParameter
+
+# This cop checks for the use of a method, the result of which would be a literal, like an empty array, hash, or string.
+# Style/EmptyLiteral
+
+# This cop checks for the formatting of empty method definitions.
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# This cop checks ensures source files have no utf-8 encoding comments.
+# Style/Encoding
+
+# This cop checks for END blocks.
+# Style/EndBlock
+
+# This cop checks for endless methods.
+Style/EndlessMethod:
+  Enabled: true
+  EnforcedStyle: disallow
+
+# This cop ensures that eval methods (eval, instance_eval, class_eval and module_eval) are given filename and line number values (FILE and LINE).
+# Style/EvalWithLocation
+
+# This cop checks for places where Integer#even? or Integer#odd? can be used.
+# Style/EvenOdd
+
+# This cop checks for use of the File.expand_path arguments. Likewise, it also checks for the Pathname.new argument.
+# Style/ExpandPathArguments
+
+# This cop enforces the use of explicit block argument to avoid writing block literal that just passes its arguments to another block.
+# Style/ExplicitBlockArgument
+
+# This cop enforces consistency when using exponential notation for numbers in the code (eg 1.2e4). Different styles are supported:
+# Style/ExponentialNotation
+
+# Favor File.(bin)read convenience methods.
+Style/FileRead:
+  Enabled: true
+
+# Favor File.(bin)write convenience methods.
+Style/FileWrite:
+  Enabled: true
+
+# This cop checks for division with integers coerced to floats. It is recommended to either always use fdiv or coerce one side only. This cop also provides other options for code consistency.
+# Style/FloatDivision
+
+# This cop looks for uses of the for keyword or each method. The preferred alternative is set in the EnforcedStyle configuration parameter. An each call with a block on a single line is always allowed.
+# Style/For
+
+# This cop enforces the use of a single string formatting utility. Valid options include Kernel#format, Kernel#sprintf and String#%.
+Style/FormatString:
+  EnforcedStyle: percent
+
+# Use a consistent style for named format string tokens.
+# Style/FormatStringToken
+
+# This cop is designed to help you transition from mutable string literals to frozen string literals.
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# This cop enforces the use of $stdout/$stderr/$stdin instead of STDOUT/STDERR/STDIN.
+# Style/GlobalStdStream
+
+# This cop looks for uses of global variables.
+# Style/GlobalVars
+
+# Use a guard clause instead of wrapping the code inside a conditional expression
+# Style/GuardClause
+
+# Checks for presence or absence of braces around hash literal as a last array item depending on configuration.
+# Style/HashAsLastArrayItem
+
+# This cop checks the usage of pre-2.1 Hash[args] method of converting enumerables and sequences of values to hashes.
+Style/HashConversion:
+  Enabled: true
+
+# This cop checks for uses of each_key and each_value Hash methods.
+# Style/HashEachMethods
+
+# This cop checks for usages of Hash#reject, Hash#select, and Hash#filter methods that can be replaced with Hash#except method.
+Style/HashExcept:
+  Enabled: true
+
+# This cop checks for places where case-when represents a simple 1:1 mapping and can be replaced with a hash lookup.
+# Style/HashLikeCase
+
+# This cop checks hash literal syntax.
+Style/HashSyntax:
+  EnforcedShorthandSyntax: never
+
+# This cop looks for uses of .each_with_object({}) {…}, .map {…}.to_h, and Hash[_.map {…}] that are actually just transforming the keys of a hash,
+# and tries to use a simpler & faster call to transform_keys instead.
+# Style/HashTransformKeys
+
+# This cop looks for uses of .each_with_object({}) {…}, .map {…}.to_h, and Hash[_.map {…}] that are actually just transforming the values of a hash,
+# and tries to use a simpler & faster call to transform_values instead.
+# Style/HashTransformValues
+
+# This cop checks for identical expressions at the beginning or end of each branch of a conditional expression.
+# Style/IdenticalConditionalBranches
+
+# If the else branch of a conditional consists solely of an if node, it can be combined with the else to become an elsif.
+# Style/IfInsideElse
+
+# Checks for if and unless statements that would fit on one line if written as modifier if/unless.
+# Style/IfUnlessModifier
+
+# Checks for if and unless statements used as modifiers of other if or unless statements.
+# Style/IfUnlessModifierOfIfUnless
+
+# This cop checks for redundant if with boolean literal branches.
+Style/IfWithBooleanLiteralBranches:
+  Enabled: true
+
+# Checks for uses of semicolon in if statements.
+# Style/IfWithSemicolon
+
+# This cop checks for raise or fail statements which do not specify an explicit exception class.
+Style/ImplicitRuntimeError:
+  Enabled: true
+
+# This cop checks for in; uses in case expressions.
+Style/InPatternThen:
+  Enabled: true
+
+# Use Kernel#loop for infinite loops.
+# Style/InfiniteLoop
+
+# This cop checks for trailing inline comments.
+# Style/InlineComment
+
+# This cop check for usages of not (not or !) called on a method when an inverse of that method can be used instead.
+# Style/InverseMethods
+
+# This cop checks for hardcoded IP addresses, which can make code brittle.
+Style/IpAddresses:
+  Enabled: true
+
+# This cop enforces that optional keyword parameters are placed at the end of the parameters list.
+# Style/KeywordParametersOrder
+
+# This cop (by default) checks for uses of the lambda literal syntax for single line lambdas, and the method call syntax for multiline lambdas.
+# Style/Lambda
+
+# This cop checks for use of the lambda.(args) syntax.
+# Style/LambdaCall
+
+# This cop checks for string literal concatenation at the end of a line.
+# Style/LineEndConcatenation
+
+# This cop looks for uses of map.to_h or collect.to_h that could be written with just to_h in Ruby >= 2.6.
+Style/MapToHash:
+  Enabled: true
+
+# This cop enforces the presence (default) or absence of parentheses in method calls containing parameters.
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  EnforcedStyle: omit_parentheses
+  AllowParenthesesInMultilineCall: true
+  AllowParenthesesInChaining: true
+  AllowParenthesesInCamelCaseMethod: true
+
+# This cop checks for unwanted parentheses in parameterless method calls.
+# Style/MethodCallWithoutArgsParentheses
+
+# This cop checks for methods called on a do…end block.
+# Style/MethodCalledOnDoEndBlock
+
+# This cop checks for parentheses around the arguments in method definitions.
+Style/MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses_except_multiline
+
+# This cop checks for potential uses of Enumerable#minmax.
+# Style/MinMax
+
+# Checks for if expressions that do not have an else branch.
+# Style/MissingElse
+
+# This cop checks for the presence of method_missing without also defining respond_to_missing?.
+# Style/MissingRespondToMissing
+
+# This cop checks for grouping of mixins in class and module bodies.
+# Style/MixinGrouping
+
+# This cop checks that include, extend and prepend statements appear inside classes and modules, not at the top level, so as to not affect the behavior of Object.
+# Style/MixinUsage
+
+# This cop checks for use of extend self or module_function in a module.
+# Style/ModuleFunction
+
+# This cop checks for chaining of a block after another block that spans multiple lines.
+Style/MultilineBlockChain:
+  Enabled: false
+
+# Checks for uses of if/unless modifiers with multiple-lines bodies.
+# Style/MultilineIfModifier
+
+# Checks for uses of the then keyword in multi-line if statements.
+# Style/MultilineIfThen
+
+# This cop checks uses of the then keyword in multi-line in statement.
+Style/MultilineInPatternThen:
+  Enabled: true
+
+# This cop checks expressions wrapping styles for multiline memoization.
+# Style/MultilineMemoization
+
+# This cop checks for method signatures that span multiple lines.
+# Style/MultilineMethodSignature
+
+# This cop checks for multi-line ternary op expressions.
+# Style/MultilineTernaryOperator
+
+# This cop checks uses of the then keyword in multi-line when statements.
+# Style/MultilineWhenThen
+
+# This cop checks against comparing a variable with multiple items, where Array#include?, Set#include? or a case could be used instead to avoid code repetition.
+# Style/MultipleComparison
+
+# This cop checks whether some constant value isn’t a mutable literal (e.g. array or hash).
+# Style/MutableConstant
+
+# Checks for uses of if with a negated condition.
+# Style/NegatedIf
+
+# This cop checks for uses of if-else and ternary operators with a negated condition which can be simplified by inverting condition and swapping branches.
+Style/NegatedIfElseCondition:
+  Enabled: true
+
+# Checks for uses of unless with a negated condition. Only unless without else are considered. There are three different styles:
+# Style/NegatedUnless
+
+# Checks for uses of while with a negated condition.
+# Style/NegatedWhile
+
+# This cop checks for nested use of if, unless, while and until in their modifier form.
+# Style/NestedModifier
+
+# This cop checks for unparenthesized method calls in the argument list of a parenthesized method call.
+Style/NestedParenthesizedCalls:
+  Enabled: false
+
+# This cop checks for nested ternary op expressions.
+# Style/NestedTernaryOperator
+
+# Use next to skip iteration instead of a condition at the end.
+# Style/Next
+
+# This cop checks for comparison of something with nil using == and nil?.
+# Style/NilComparison
+
+# This cop checks for lambdas and procs that always return nil, which can be replaced with an empty lambda or proc instead.
+Style/NilLambda:
+  Enabled: true
+
+# This cop checks for non-nil checks, which are usually redundant.
+Style/NonNilCheck:
+  Enabled: false
+
+# This cop checks for uses of the keyword not instead of !.
+# Style/Not
+
+# This cop checks for numbered parameters.
+Style/NumberedParameters:
+  Enabled: true
+  EnforcedStyle: disallow
+
+# This cop detects use of an excessive amount of numbered parameters in a single block.
+Style/NumberedParametersLimit:
+  Enabled: true
+
+# This cop checks for octal, hex, binary, and decimal literals using uppercase prefixes and corrects them to lowercase prefix or no prefix (in case of decimals).
+# Style/NumericLiteralPrefix
+
+# This cop checks for big numeric literals without _ between groups of digits in them.
+# Style/NumericLiterals
+
+# This cop checks for usage of comparison operators (==, >, <) to test numbers as zero, positive, or negative.
+# Style/NumericPredicate
+
+# Checks for uses of if/then/else/end constructs on a single line.
+# Style/OneLineConditional
+
+# This cop flags uses of OpenStruct, as it is now officially discouraged to be used for performance, version compatibility, and potential security issues.
+Style/OpenStructUse:
+  Enabled: false
+
+# This cop checks for options hashes and discourages them if the current Ruby version supports keyword arguments.
+Style/OptionHash:
+  Enabled: true
+
+# This cop checks for optional arguments to methods that do not come at the end of the argument list.
+# Style/OptionalArguments
+
+# This cop checks for places where keyword arguments can be used instead of boolean arguments when defining methods.
+# Style/OptionalBooleanParameter
+
+# This cop checks for potential usage of the ||= operator.
+# Style/OrAssignment
+
+# Checks for simple usages of parallel assignment. This will only complain when the number of variables being assigned matched the number of assigning variables.
+# Style/ParallelAssignment
+
+# This cop checks for the presence of superfluous parentheses around the condition of if/unless/while/until.
+# Style/ParenthesesAroundCondition
+
+# This cop enforces the consistent usage of %-literal delimiters.
+# Style/PercentLiteralDelimiters
+
+# This cop checks for usage of the %Q() syntax when %q() would do.
+# Style/PercentQLiterals
+
+# This cop looks for uses of Perl-style regexp match backreferences and their English versions like $1, $2, $&, &+, $MATCH, $PREMATCH, etc.
+# Style/PerlBackrefs
+
+# This cop checks for uses of methods Hash#has_key? and Hash#has_value?, and suggests using Hash#key? and Hash#value? instead.
+# Style/PreferredHashMethods
+
+# This cop checks for uses of Proc.new where Kernel#proc would be more appropriate.
+# Style/Proc
+
+# Checks if the quotes used for quoted symbols match the configured defaults.
+Style/QuotedSymbols:
+  Enabled: true
+
+# This cop checks the args passed to fail and raise.
+# Style/RaiseArgs
+
+# This cop checks for the use of randomly generated numbers, added/subtracted with integer literals, as well as those with Integer#succ and Integer#pred methods.
+# Style/RandomWithOffset
+
+# This cop checks for a redundant argument passed to certain methods.
+Style/RedundantArgument:
+  Enabled: false
+
+# This cop checks for redundant assignment before returning.
+# Style/RedundantAssignment
+
+# This cop checks for redundant begin blocks.
+# Style/RedundantBegin
+
+# This cop checks for usage of the %W() syntax when %w() would do.
+# Style/RedundantCapitalW
+
+# This cop checks for unnecessary conditional expressions.
+# Style/RedundantCondition
+
+# This cop checks for redundant returning of true/false in conditionals.
+# Style/RedundantConditional
+
+# This cop checks for RuntimeError as the argument of raise/fail.
+Style/RedundantException:
+  Enabled: false
+
+# This cop identifies places where fetch(key) { value } can be replaced by fetch(key, value).
+# Style/RedundantFetchBlock
+
+# This cop checks for the presence of superfluous .rb extension in the filename provided to require and require_relative.
+# Style/RedundantFileExtensionInRequire
+
+# This cop check for uses of Object#freeze on immutable objects.
+# Style/RedundantFreeze
+
+# This cop checks for strings that are just an interpolated expression.
+# Style/RedundantInterpolation
+
+# This cop checks for redundant parentheses.
+Style/RedundantParentheses:
+  Enabled: false
+
+# This cop checks for usage of the %q/%Q syntax when \'\' or "" would do.
+# Style/RedundantPercentQ
+
+# This cop checks for unnecessary single-element Regexp character classes.
+# Style/RedundantRegexpCharacterClass
+
+# This cop checks for redundant escapes inside Regexp literals.
+# Style/RedundantRegexpEscape
+
+# This cop checks for redundant return expressions.
+# Style/RedundantReturn
+
+# This cop checks for redundant uses of self.
+# Style/RedundantSelf
+
+# This cop checks for places where redundant assignments are made for in place modification methods.
+# Style/RedundantSelfAssignment
+
+# This cop checks for places where conditional branch makes redundant self-assignment.
+Style/RedundantSelfAssignmentBranch:
+  Enabled: true
+
+# This cop is used to identify instances of sorting and then taking only the first or last element.
+# Style/RedundantSort
+
+# This cop identifies places where sort_by { … } can be replaced by sort.
+# Style/RedundantSortBy
+
+# This cop enforces using // or %r around regular expressions.
+Style/RegexpLiteral:
+  EnforcedStyle: percent_r
+
+# This cop checks for uses of rescue in its modifier form.
+# Style/RescueModifier
+
+# This cop checks for rescuing StandardError.
+# Style/RescueStandardError
+
+# This cop enforces consistency between 'return nil' and 'return'.
+Style/ReturnNil:
+  Enabled: true
+
+# This cop transforms usages of a method call safeguarded by a non nil check for the variable whose method is being called to safe navigation (&.).
+# Style/SafeNavigation
+
+# This cop is used to identify usages of shuffle.first, shuffle.last, and shuffle[] and change them to use sample instead.
+# Style/Sample
+
+# This cop looks for places where an subset of an Enumerable (array, range, set, etc.; see note below) is calculated based on a Regexp match,
+# and suggests grep or grep_v instead.
+Style/SelectByRegexp:
+  Enabled: true
+
+# This cop enforces the use the shorthand for self-assignment.
+# Style/SelfAssignment
+
+# This cop checks for multiple expressions placed on the same line. It also checks for lines terminated with a semicolon.
+# Style/Semicolon
+
+# This cop checks for the use of the send method.
+# Style/Send
+
+# This cop checks for uses of fail and raise.
+# Style/SignalException
+
+# Sometimes using dig method ends up with just a single argument. In such cases, dig should be replaced with [].
+# Style/SingleArgumentDig
+
+# This cop checks whether the block parameters of a single-line method accepting a block match the names specified via configuration.
+# Style/SingleLineBlockParams
+
+# This cop checks for single-line method definitions that contain a body.
+Style/SingleLineMethods:
+  AllowIfMethodIsEmpty: false
+
+# This cop checks that arrays are sliced with endless ranges instead of ary[start..-1] on Ruby 2.6+.
+# Style/SlicingWithRange
+
+# If the branch of a conditional consists solely of a conditional node, its conditions can be combined with the conditions of the outer branch. This helps to keep the nesting level from getting too deep.
+# Style/SoleNestedConditional
+
+# This cop looks for uses of Perl-style global variables. Correcting to global variables in the \'English\' library will add a require statement to the top of the file if enabled by RequireEnglish config.
+# Style/SpecialGlobalVars
+
+# Check for parentheses around stabby lambda arguments. There are two different styles. Defaults to require_parentheses.
+# Style/StabbyLambdaParentheses
+
+# This cop checks for places where classes with only class methods can be replaced with a module.
+Style/StaticClass:
+  Enabled: true
+
+# This cop identifies places where $stderr.puts can be replaced by warn.
+# Style/StderrPuts
+
+# Checks for uses of String#split with empty string or regexp literal argument.
+Style/StringChars:
+  Enabled: true
+
+# This cop checks for places where string concatenation can be replaced with string interpolation.
+# Style/StringConcatenation
+
+# This cop checks for the use of strings as keys in hashes. The use of symbols is preferred instead.
+Style/StringHashKeys:
+  Enabled: false
+
+# Checks if uses of quotes match the configured preference.
+# Style/StringLiterals
+
+# This cop checks that quotes inside the string interpolation match the configured preference.
+# Style/StringLiteralsInInterpolation
+
+# This cop enforces the use of consistent method names from the String class.
+# Style/StringMethods
+
+# This cop identifies places where lstrip.rstrip can be replaced by strip.
+# Style/Strip
+
+# This cop checks for inheritance from Struct.new.
+# Style/StructInheritance
+
+# This cop enforces the use of shorthand-style swapping of 2 variables.
+Style/SwapValues:
+  Enabled: true
+
+# This cop can check for array literals made up of symbols that are not using the %i() syntax.
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+# This cop checks symbol literal syntax.
+# Style/SymbolLiteral
+
+# Use symbols as procs when possible.
+# Style/SymbolProc
+
+# This cop checks for the presence of parentheses around ternary conditions.
+Style/TernaryParentheses:
+  EnforcedStyle: require_parentheses_when_complex
+  AllowSafeAssignment: false
+
+# Newcomers to ruby applications may write top-level methods, when ideally they should be organized in appropriate classes or modules.
+Style/TopLevelMethodDefinition:
+  Enabled: true
+
+# This cop checks for trailing code after the class definition.
+# Style/TrailingBodyOnClass
+
+# This cop checks for trailing code after the method definition.
+# Style/TrailingBodyOnMethodDefinition
+
+# This cop checks for trailing code after the module definition.
+# Style/TrailingBodyOnModule
+
+# This cop checks for trailing comma in argument lists.
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: no_comma
+
+# This cop checks for trailing comma in array literals.
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: no_comma
+
+# This cop checks whether trailing commas in block arguments are required.
+Style/TrailingCommaInBlockArgs:
+  Enabled: true
+
+# This cop checks for trailing comma in hash literals.
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: no_comma
+
+# This cop checks for trailing code after the method definition.
+# Style/TrailingMethodEndStatement
+
+# This cop checks for extra underscores in variable assignment.
+# Style/TrailingUnderscoreVariable
+
+# This cop looks for trivial reader/writer methods, that could have been created with the attr_* family of functions automatically.
+# Style/TrivialAccessors
+
+# This cop looks for unless expressions with else clauses.
+# Style/UnlessElse
+
+# This cop checks for the use of logical operators in an unless condition. It discourages such code, as the condition becomes more difficult to read and understand.
+Style/UnlessLogicalOperators:
+  EnforcedStyle: forbid_logical_operators
+
+# This cop checks for accessing the first element of String#unpack which can be replaced with the shorter method unpack1.
+# Style/UnpackFirst
+
+# This cop checks for variable interpolation (like "#@ivar").
+# Style/VariableInterpolation
+
+# This cop checks for when; uses in case expressions.
+# Style/WhenThen
+
+# Checks for uses of do in multi-line while/until statements.
+# Style/WhileUntilDo
+
+# Checks for while and until statements that would fit on one line if written as a modifier while/until.
+# Style/WhileUntilModifier
+
+# This cop can check for array literals made up of word-like strings, that are not using the %w() syntax.
+Style/WordArray:
+  EnforcedStyle: brackets
+
+# This cop can either enforce or forbid Yoda conditions, i.e. comparison operations where the order of expression is reversed. eg. 5 == x
+Style/YodaCondition:
+  Enabled: true
+  EnforcedStyle: forbid_for_all_comparison_operators
+
+# This cop checks for numeric comparisons that can be replaced by a predicate method.
+# Style/ZeroLengthPredicate'
