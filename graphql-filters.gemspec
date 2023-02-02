@@ -2,7 +2,7 @@ require_relative 'lib/graphql/filters/version'
 
 Gem::Specification.new do |spec|
   spec.name = 'graphql-filters'
-  spec.version = Graphql::Filters::VERSION
+  spec.version = GraphQL::Filters::VERSION
   spec.authors = ['Riccardo Agatea']
   spec.email = ['riccardo@moku.io']
 
