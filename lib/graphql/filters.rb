@@ -21,3 +21,4 @@ end
 # These need to be here, after the definition of GraphQL::Filters
 
 require_relative 'filters/input_types/complex_filter_input_type'
+require_relative 'filters/filterable'
