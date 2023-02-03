@@ -1,3 +1,9 @@
+require_relative 'fields_comparison_input_type'
+require_relative 'list_scalar_comparison_input_type'
+require_relative 'string_comparison_input_type'
+require_relative 'numeric_comparison_input_type'
+require_relative 'base_scalar_comparison_input_type'
+
 module GraphQL
   module Filters
     module InputTypes
