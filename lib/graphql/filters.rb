@@ -14,7 +14,7 @@ module GraphQL
 
     config.base_input_object_class = GraphQL::Schema::InputObject
 
-    delegate *config.keys, to: :config
+    singleton_class.delegate(*config.keys, to: :config)
   end
 end
 
