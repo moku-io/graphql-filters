@@ -5,6 +5,7 @@ Gem::Specification.new do |spec|
   spec.version = GraphQL::Filters::VERSION
   spec.authors = ['Moku S.r.l.', 'Riccardo Agatea']
   spec.email = ['info@moku.io']
+  spec.license = 'MIT'
 
   spec.summary = 'Provide a fully typed interface to filter lists in a GraphQL API.'
   spec.description = 'Provide a fully typed interface to filter lists in a GraphQL API.'
