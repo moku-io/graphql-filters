@@ -1,5 +1,13 @@
-## [Unreleased]
+# Changelog
 
-## [0.1.0] - 2023-02-02
+[//]: # (
+## <Release number> <Date YYYY-MM-DD>
+### Breaking changes
+### Deprecations
+### New features
+### Bug fixes
+)
 
-- Initial release
+## 0.1.0 2023-02-03
+
+First release
