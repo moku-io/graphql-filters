@@ -28,7 +28,6 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_dependency 'active_record_extended'
   spec.add_dependency 'activesupport'
   spec.add_dependency 'graphql'
 end
