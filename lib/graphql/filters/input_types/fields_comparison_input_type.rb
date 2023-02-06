@@ -11,6 +11,7 @@ module GraphQL
             graphql_name "#{object_type.graphql_name}ComparisonInput"
 
             object_type.fields.each_value do |field_object|
+              next unless field_object.filter_options.enabled
               type = field_object.type
 
               type = type.of_type while type.kind == GraphQL::TypeKinds::NON_NULL
@@ -20,7 +21,7 @@ module GraphQL
                        required: false,
                        prepare: lambda { |field_comparator, _context|
                          lambda { |scope|
-                           field_comparator.call(scope, field_object.name)
+                           field_comparator.call(scope, field_object.filter_options.column_name)
                          }
                        }
             end
