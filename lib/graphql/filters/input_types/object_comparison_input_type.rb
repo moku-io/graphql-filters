@@ -1,15 +1,14 @@
-require_relative 'comparison_input_type'
+require_relative 'base_comparison_input_type'
+require_relative 'fields_comparison_input_type'
 
 module GraphQL
   module Filters
     module InputTypes
-      class ComplexFilterInputType
+      class ObjectComparisonInputType
         include CachedClass
 
         resolve_cache_miss do |value_type, klass|
-          next ComplexFilterInputType[value_type.of_type] if value_type.respond_to? :of_type
-
-          klass.new Filters.base_input_object_class do
+          klass.new BaseComparisonInputType do
             graphql_name "#{value_type.graphql_name}ComplexFilterInput"
 
             one_of
@@ -41,7 +40,7 @@ module GraphQL
                          scope.and(not_arg.call(scope).invert_where)
                        }
                      }
-            argument :fields, ComparisonInputType[value_type], required: false
+            argument :fields, FieldsComparisonInputType[value_type], required: false
 
             def prepare
               values.sole
