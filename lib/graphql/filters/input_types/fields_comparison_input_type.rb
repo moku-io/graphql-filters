@@ -1,4 +1,4 @@
-require_relative 'comparison_input_type'
+require_relative 'base_comparison_input_type'
 
 module GraphQL
   module Filters
@@ -7,20 +7,20 @@ module GraphQL
         include CachedClass
 
         resolve_cache_miss do |object_type, klass|
-          klass.new Filters.base_input_object_class do
+          klass.new BaseComparisonInputType do
             graphql_name "#{object_type.graphql_name}ComparisonInput"
 
             object_type.fields.each_value do |field_object|
+              next unless field_object.filter_options.enabled
+
               type = field_object.type
 
-              type = type.of_type while type.kind == GraphQL::TypeKinds::NON_NULL
-
               argument field_object.name,
-                       ComparisonInputType[type],
+                       type.comparison_input_type,
                        required: false,
                        prepare: lambda { |field_comparator, _context|
                          lambda { |scope|
-                           field_comparator.call(scope, field_object.name)
+                           field_comparator.call(scope, field_object.filter_options.column_name)
                          }
                        }
             end
