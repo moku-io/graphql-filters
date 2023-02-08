@@ -8,7 +8,7 @@ monkey_patch = Module.new do
   protected
 
     def get_comparison_input_type(*)
-      GraphQL::Filters::InputTypes::NumericComparisonInputType
+      GraphQL::Filters::InputTypes::NumericComparisonInputType[self]
     end
   end
 end
