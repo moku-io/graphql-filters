@@ -20,5 +20,6 @@ end
 
 # These need to be here, after the definition of GraphQL::Filters
 
+require_relative 'models_connect'
 require_relative 'filters/dsl'
 require_relative 'filters/filterable'
