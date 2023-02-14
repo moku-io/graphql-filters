@@ -33,6 +33,11 @@ module GraphQL
                 end
 
                 if column_name.nil?
+                  unless scope.structurally_compatible? nested_query
+                    raise "the produced nested query on model #{object_type.model_class}"\
+                          'is not compatible with the provided scope'
+                  end
+
                   scope.and nested_query
                 else
                   scope.where column_name => nested_query
