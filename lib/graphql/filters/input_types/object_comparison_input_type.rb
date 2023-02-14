@@ -16,9 +16,9 @@ module GraphQL
                      [self],
                      required: false,
                      prepare: lambda { |and_arg, _context|
-                       lambda { |scope|
+                       lambda { |scope, column_name=nil|
                          and_arg.reduce scope do |acc, val|
-                           val.call acc
+                           val.call acc, column_name
                          end
                        }
                      }
@@ -26,9 +26,9 @@ module GraphQL
                      [self],
                      required: false,
                      prepare: lambda { |or_arg, _context|
-                       lambda { |scope|
+                       lambda { |scope, column_name=nil|
                          or_arg.reduce scope.none do |acc, val|
-                           acc.or val.call(scope)
+                           acc.or val.call(scope, column_name)
                          end
                        }
                      }
@@ -36,8 +36,8 @@ module GraphQL
                      self,
                      required: false,
                      prepare: lambda { |not_arg, _context|
-                       lambda { |scope|
-                         scope.and(not_arg.call(scope).invert_where)
+                       lambda { |scope, column_name=nil|
+                         scope.and(not_arg.call(scope, column_name).invert_where)
                        }
                      }
             argument :fields, FieldsComparisonInputType[value_type], required: false
