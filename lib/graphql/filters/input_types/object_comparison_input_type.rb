@@ -37,7 +37,7 @@ module GraphQL
                      required: false,
                      prepare: lambda { |not_arg, _context|
                        lambda { |scope, column_name=nil|
-                         scope.and(not_arg.call(scope, column_name).invert_where)
+                         scope.and(not_arg.call(scope.unscope(:where), column_name).invert_where)
                        }
                      }
             argument :fields, FieldsComparisonInputType[value_type], required: false
