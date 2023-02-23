@@ -9,6 +9,8 @@ module GraphQL
         extend ActiveSupport::Concern
 
         included do
+          next unless is_a? Class
+
           class_attribute :cache,
                           default: Hash.new { |h, k|
                             h[k] = Class.new
