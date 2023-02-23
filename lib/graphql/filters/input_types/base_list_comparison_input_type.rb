@@ -12,28 +12,6 @@ module GraphQL
 
             one_of
 
-            argument :any,
-                     value_type.of_type.comparison_input_type,
-                     prepare: lambda { |value, _context|
-                       lambda {|scope, column_name|
-                         scope
-                       }
-                     }
-            argument :all,
-                     value_type.of_type.comparison_input_type,
-                     prepare: lambda { |value, _context|
-                       lambda {|scope, column_name|
-                         scope
-                       }
-                     }
-            argument :none,
-                     value_type.of_type.comparison_input_type,
-                     prepare: lambda { |value, _context|
-                       lambda {|scope, column_name|
-                         scope
-                       }
-                     }
-
             def prepare
               values.sole
             end
