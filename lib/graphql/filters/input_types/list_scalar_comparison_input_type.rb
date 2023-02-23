@@ -40,28 +40,36 @@ module GraphQL
                      value_type,
                      prepare: lambda { |_value, _context|
                        lambda { |_scope, _column_name|
-                         raise 'Not implemented'
+                         table = scope.table[column_name]
+                         attribute = scope.predicate_builder.build_bind_attribute column_name, value
+                         scope.where table.contained(attribute)
                        }
                      }
             argument :not_subset_of,
                      value_type,
                      prepare: lambda { |_value, _context|
                        lambda { |_scope, _column_name|
-                         raise 'Not implemented'
+                         table = scope.table[column_name]
+                         attribute = scope.predicate_builder.build_bind_attribute column_name, value
+                         scope.where.not table.contained(attribute)
                        }
                      }
             argument :superset_of,
                      value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
-                         scope.where.contains(column_name => value)
+                         table = scope.table[column_name]
+                         attribute = scope.predicate_builder.build_bind_attribute column_name, value
+                         scope.where table.contains(attribute)
                        }
                      }
             argument :not_superset_of,
                      value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
-                         scope.and(scope.where.contains(column_name => value).invert_where)
+                         table = scope.table[column_name]
+                         attribute = scope.predicate_builder.build_bind_attribute column_name, value
+                         scope.where.not table.contains(attribute)
                        }
                      }
           end
