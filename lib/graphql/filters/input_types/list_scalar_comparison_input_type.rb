@@ -8,14 +8,14 @@ module GraphQL
 
         resolve_cache_miss do |value_type, klass|
           klass.new BaseListComparisonInputType[value_type] do
-            argument :eq,
+            argument :equals,
                      value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
                          scope.where(column_name => value)
                        }
                      }
-            argument :not_eq,
+            argument :not_equals,
                      value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
