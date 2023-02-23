@@ -37,28 +37,28 @@ module GraphQL
                        }
                      }
             argument :subset_of,
-                     [value_type],
+                     value_type,
                      prepare: lambda { |_value, _context|
                        lambda { |_scope, _column_name|
                          raise 'Not implemented'
                        }
                      }
             argument :not_subset_of,
-                     [value_type],
+                     value_type,
                      prepare: lambda { |_value, _context|
                        lambda { |_scope, _column_name|
                          raise 'Not implemented'
                        }
                      }
             argument :superset_of,
-                     [value_type],
+                     value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
                          scope.where.contains(column_name => value)
                        }
                      }
             argument :not_superset_of,
-                     [value_type],
+                     value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
                          scope.and(scope.where.contains(column_name => value).invert_where)
