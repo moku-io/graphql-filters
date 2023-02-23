@@ -38,8 +38,8 @@ module GraphQL
                      }
             argument :subset_of,
                      value_type,
-                     prepare: lambda { |_value, _context|
-                       lambda { |_scope, _column_name|
+                     prepare: lambda { |value, _context|
+                       lambda { |scope, column_name|
                          table = scope.table[column_name]
                          attribute = scope.predicate_builder.build_bind_attribute column_name, value
                          scope.where table.contained(attribute)
@@ -47,8 +47,8 @@ module GraphQL
                      }
             argument :not_subset_of,
                      value_type,
-                     prepare: lambda { |_value, _context|
-                       lambda { |_scope, _column_name|
+                     prepare: lambda { |value, _context|
+                       lambda { |scope, column_name|
                          table = scope.table[column_name]
                          attribute = scope.predicate_builder.build_bind_attribute column_name, value
                          scope.where.not table.contained(attribute)
