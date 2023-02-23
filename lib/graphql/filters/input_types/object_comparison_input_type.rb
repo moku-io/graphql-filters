@@ -18,7 +18,7 @@ module GraphQL
                      prepare: lambda { |and_arg, _context|
                        lambda { |scope, column_name=nil|
                          and_arg.reduce scope do |acc, val|
-                           val.call acc, column_name
+                           acc.and val.call(scope, column_name)
                          end
                        }
                      }
