@@ -12,6 +12,17 @@ module GraphQL
 
             one_of
 
+            argument :constant,
+                     Types::Boolean,
+                     prepare: lambda { |value, _context|
+                       lambda { |scope, _column_name|
+                         if value
+                           scope.all
+                         else
+                           scope.where false
+                         end
+                       }
+                     }
             argument :equals,
                      value_type,
                      prepare: lambda { |value, _context|

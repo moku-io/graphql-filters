@@ -12,6 +12,18 @@ module GraphQL
             graphql_name "#{value_type.graphql_name}ComplexFilterInput"
 
             one_of
+
+            argument :constant,
+                     Types::Boolean,
+                     prepare: lambda { |value, _context|
+                       lambda { |scope, _column_name=nil|
+                         if value
+                           scope.all
+                         else
+                           scope.where false
+                         end
+                       }
+                     }
             argument :and,
                      [self],
                      required: false,
