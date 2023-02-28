@@ -16,7 +16,7 @@ monkey_patch = Module.new do
 protected
 
   def build_comparison_input_type
-    if unwrap.kind == GraphQL::TypeKinds::SCALAR
+    if [GraphQL::TypeKinds::SCALAR, GraphQL::TypeKinds::ENUM].include? unwrap.kind
       GraphQL::Filters::InputTypes::ListScalarComparisonInputType[self]
     else
       GraphQL::Filters::InputTypes::BaseListComparisonInputType[self]
