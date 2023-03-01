@@ -21,6 +21,6 @@ end
 # These need to be here, after the definition of GraphQL::Filters
 
 require_relative 'models_connect'
-require_relative 'filters/activerecord_patch' if defined? ActiveRecord
+require_relative 'filters/activerecord_patch'
 require_relative 'filters/dsl'
 require_relative 'filters/filterable'
