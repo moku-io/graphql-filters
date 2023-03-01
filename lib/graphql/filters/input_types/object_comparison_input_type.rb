@@ -12,13 +12,25 @@ module GraphQL
             graphql_name "#{value_type.graphql_name}ComplexFilterInput"
 
             one_of
+
+            argument :constant,
+                     Types::Boolean,
+                     prepare: lambda { |value, _context|
+                       lambda { |scope, _column_name=nil|
+                         if value
+                           scope.all
+                         else
+                           scope.where false
+                         end
+                       }
+                     }
             argument :and,
                      [self],
                      required: false,
                      prepare: lambda { |and_arg, _context|
-                       lambda { |scope|
+                       lambda { |scope, column_name=nil|
                          and_arg.reduce scope do |acc, val|
-                           val.call acc
+                           acc.and val.call(scope, column_name)
                          end
                        }
                      }
@@ -26,9 +38,9 @@ module GraphQL
                      [self],
                      required: false,
                      prepare: lambda { |or_arg, _context|
-                       lambda { |scope|
+                       lambda { |scope, column_name=nil|
                          or_arg.reduce scope.none do |acc, val|
-                           acc.or val.call(scope)
+                           acc.or val.call(scope, column_name)
                          end
                        }
                      }
@@ -36,8 +48,8 @@ module GraphQL
                      self,
                      required: false,
                      prepare: lambda { |not_arg, _context|
-                       lambda { |scope|
-                         scope.and(not_arg.call(scope).invert_where)
+                       lambda { |scope, column_name=nil|
+                         scope.and(not_arg.call(scope.unscope(:where), column_name).invert_where)
                        }
                      }
             argument :fields, FieldsComparisonInputType[value_type], required: false

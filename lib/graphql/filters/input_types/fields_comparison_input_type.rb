@@ -14,21 +14,33 @@ module GraphQL
               next unless field_object.filter_options.enabled
 
               type = field_object.type
+              filter_options = field_object.filter_options
 
               argument field_object.name,
                        type.comparison_input_type,
                        required: false,
                        prepare: lambda { |field_comparator, _context|
                          lambda { |scope|
-                           field_comparator.call(scope, field_object.filter_options.column_name)
+                           field_comparator.call scope, filter_options.column_name
                          }
                        }
             end
 
-            def prepare
-              lambda do |scope|
-                values.reduce scope do |acc, val|
+            define_method :prepare do
+              lambda do |scope, column_name=nil|
+                nested_query = values.reduce object_type.model_class.all do |acc, val|
                   val.call acc
+                end
+
+                if column_name.nil?
+                  unless scope.structurally_compatible? nested_query
+                    raise "the produced nested query on model #{object_type.model_class}"\
+                          'is not compatible with the provided scope'
+                  end
+
+                  scope.and nested_query
+                else
+                  scope.where column_name => nested_query
                 end
               end
             end

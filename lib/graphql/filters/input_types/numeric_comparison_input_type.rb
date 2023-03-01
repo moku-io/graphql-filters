@@ -1,4 +1,5 @@
 require_relative 'base_scalar_comparison_input_type'
+require 'arel'
 
 module GraphQL
   module Filters
@@ -12,28 +13,28 @@ module GraphQL
                      value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
-                         scope.where("#{column_name} > ?", value)
+                         scope.where.not(column_name => (..value))
                        }
                      }
             argument :greater_than_or_equals_to,
                      value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
-                         scope.where("#{column_name} >= ?", value)
+                         scope.where(column_name => (value..))
                        }
                      }
             argument :less_than,
                      value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
-                         scope.where("#{column_name} < ?", value)
+                         scope.where(column_name => (...value))
                        }
                      }
             argument :less_than_or_equals_to,
                      value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
-                         scope.where("#{column_name} <= ?", value)
+                         scope.where(column_name => (..value))
                        }
                      }
           end

@@ -759,10 +759,12 @@ Lint/UnmodifiedReduceAccumulator:
 # Lint/UnreachableLoop
 
 # This cop checks for unused block arguments.
-# Lint/UnusedBlockArgument
+Lint/UnusedBlockArgument:
+  AutoCorrect: false
 
 # This cop checks for unused method arguments.
-# Lint/UnusedMethodArgument
+Lint/UnusedMethodArgument:
+  AutoCorrect: false
 
 # This cop identifies places where URI.escape can be replaced by CGI.escape, URI.encode_www_form,
 # or URI.encode_www_form_component depending on your specific use case.
