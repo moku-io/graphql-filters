@@ -8,23 +8,23 @@ module GraphQL
                  String,
                  prepare: lambda { |value, _context|
                    lambda { |scope, column_name|
-                     operator, pattern = resolve_pattern value
-                     scope.where "#{column_name} #{operator} ?", pattern
+                     column_node = scope.table[column_name]
+                     scope.where resolve_pattern(column_node, value)
                    }
                  }
 
         class << self
         private
 
-          def resolve_pattern expression
+          def resolve_pattern column_node, expression
             expression.match %r{v(?<version>\d)+/(?<full_pattern>.*)} do |match_data|
               raise 'The only supported version of pattern is v1' if match_data[:version].to_i != 1
 
-              resolve_v1 match_data[:full_pattern]
+              resolve_v1 column_node, match_data[:full_pattern]
             end
           end
 
-          def resolve_v1 full_pattern
+          def resolve_v1 column_node, full_pattern
             full_pattern.match %r{(?<pattern>.*?)/(?<options>.*)} do |match_data|
               options = match_data[:options].chars.map(&:to_sym)
 
@@ -32,11 +32,11 @@ module GraphQL
                 raise 'The only supported option is \'i\' for case insensitive matching'
               end
 
-              operator = ((options.first == :i) ? 'ILIKE' : 'LIKE')
+              case_sensitive = !options.include?(:i)
 
               pattern = match_data[:pattern].gsub('*', '%').gsub('.', '_')
 
-              [operator, pattern]
+              column_node.matches pattern, nil, case_sensitive
             end
           end
         end
