@@ -1,6 +1,7 @@
 require 'active_support/concern'
 require_relative '../../../input_types/base_list_comparison_input_type'
 require_relative '../../../input_types/list_scalar_comparison_input_type'
+require_relative '../../../input_types/list_object_comparison_input_type'
 
 monkey_patch = Module.new do
   extend ActiveSupport::Concern
@@ -19,7 +20,7 @@ protected
     if [GraphQL::TypeKinds::SCALAR, GraphQL::TypeKinds::ENUM].include? unwrap.kind
       GraphQL::Filters::InputTypes::ListScalarComparisonInputType[self]
     else
-      GraphQL::Filters::InputTypes::BaseListComparisonInputType[self]
+      GraphQL::Filters::InputTypes::ListObjectComparisonInputType[self]
     end
   end
 end
