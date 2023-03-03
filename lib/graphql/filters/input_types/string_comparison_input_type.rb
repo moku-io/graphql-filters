@@ -34,7 +34,23 @@ module GraphQL
 
               case_sensitive = !options.include?(:i)
 
-              pattern = match_data[:pattern].gsub('*', '%').gsub('.', '_')
+              characters = match_data[:pattern].chars
+              pattern = ''
+
+              while characters.present?
+                char = characters.shift
+
+                pattern << case char
+                           when '\\'
+                             ActiveRecord::Base.sanitize_sql_like characters.shift
+                           when '*'
+                             '%'
+                           when '.'
+                             '_'
+                           else
+                             ActiveRecord::Base.sanitize_sql_like char
+                           end
+              end
 
               column_node.matches pattern, nil, case_sensitive
             end
