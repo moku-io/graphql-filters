@@ -16,7 +16,7 @@ module GraphQL
             argument :constant,
                      Types::Boolean,
                      prepare: lambda { |value, _context|
-                       lambda { |scope, _column_name=nil|
+                       lambda { |scope, _association_name=nil|
                          if value
                            scope.all
                          else
@@ -28,9 +28,9 @@ module GraphQL
                      [self],
                      required: false,
                      prepare: lambda { |and_arg, _context|
-                       lambda { |scope, column_name=nil|
+                       lambda { |scope, association_name=nil|
                          and_arg.reduce scope do |acc, val|
-                           acc.and val.call(scope, column_name)
+                           acc.and val.call(scope, association_name)
                          end
                        }
                      }
@@ -38,9 +38,9 @@ module GraphQL
                      [self],
                      required: false,
                      prepare: lambda { |or_arg, _context|
-                       lambda { |scope, column_name=nil|
+                       lambda { |scope, association_name=nil|
                          or_arg.reduce scope.none do |acc, val|
-                           acc.or val.call(scope, column_name)
+                           acc.or val.call(scope, association_name)
                          end
                        }
                      }
@@ -48,8 +48,8 @@ module GraphQL
                      self,
                      required: false,
                      prepare: lambda { |not_arg, _context|
-                       lambda { |scope, column_name=nil|
-                         scope.and(not_arg.call(scope.unscope(:where), column_name).invert_where)
+                       lambda { |scope, association_name=nil|
+                         scope.and(not_arg.call(scope.unscope(:where), association_name).invert_where)
                        }
                      }
             argument :fields, FieldsComparisonInputType[value_type], required: false

@@ -4,19 +4,17 @@ require 'ostruct'
 
 monkey_patch = Module.new do
   extend ActiveSupport::Concern
-  attr_reader :filter_options
 
   prepended do
-    next unless is_a? Class
-
     class_attribute :filter_options_defaults,
                     instance_predicate: false,
                     instance_writer: false,
                     instance_reader: true,
-                    default: OpenStruct.new(
-                      enabled: true,
-                      column_name: :method_sym.to_proc
-                    )
+                    default: {
+                      enabled:          true,
+                      attribute_name:   :method_sym.to_proc,
+                      association_name: :method_sym.to_proc
+                    }
   end
 
   def initialize *args, filter: true, **kwargs, &block
@@ -32,15 +30,12 @@ monkey_patch = Module.new do
               when false
                 {enabled: false}
               when true
-                {}
+                {enabled: true}
               else
                 options
               end
 
-    kwargs.reverse_merge! filter_options_defaults.to_h
-    kwargs.merge! options
-
-    kwargs.transform_values! do |value|
+    applied_filter_options_defaults = filter_options_defaults.transform_values do |value|
       if value.is_a? Proc
         value.call self
       else
@@ -48,7 +43,14 @@ monkey_patch = Module.new do
       end
     end
 
-    @filter_options = OpenStruct.new kwargs
+    kwargs.reverse_merge! applied_filter_options_defaults
+    kwargs.reverse_merge! options
+
+    filter_options.merge! kwargs
+  end
+
+  def filter_options
+    @filter_options ||= {}
   end
 end
 
