@@ -2,9 +2,9 @@ PATH
   remote: .
   specs:
     graphql-filters (0.1.0)
-      activerecord
-      activesupport
-      graphql
+      activerecord (~> 7.0.0)
+      activesupport (~> 7.0.0)
+      graphql (~> 2.0.0)
 
 GEM
   remote: https://rubygems.org/
