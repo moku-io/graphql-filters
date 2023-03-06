@@ -1,4 +1,4 @@
-require 'active_support/core_ext/hash/reverse_merge'
+require_relative 'base_comparison_input_type'
 
 module GraphQL
   module Filters
@@ -7,41 +7,45 @@ module GraphQL
         include CachedClass
 
         resolve_cache_miss do |value_type, klass|
-          filter_type = (value_type.kind == GraphQL::TypeKinds::SCALAR) ? value_type : value_type.filter_type
-
-          klass.new Filters.base_input_object_class do
-            def self.argument *args, **kwargs, &block
-              kwargs.reverse_merge! required: false
-              super(*args, **kwargs, &block)
-            end
-
-            graphql_name "#{filter_type.graphql_name}ComparisonInput"
+          klass.new BaseComparisonInputType do
+            graphql_name "#{value_type.graphql_name}ComparisonInput"
 
             one_of
 
-            argument :eq,
-                     filter_type,
+            argument :constant,
+                     Types::Boolean,
+                     prepare: lambda { |value, _context|
+                       lambda { |scope, _column_name|
+                         if value
+                           scope.all
+                         else
+                           scope.where false
+                         end
+                       }
+                     }
+            argument :equals,
+                     value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
                          scope.where(column_name => value)
                        }
                      }
-            argument :not_eq,
-                     filter_type,
+            argument :not_equals,
+                     value_type,
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
                          scope.where.not(column_name => value)
                        }
                      }
             argument :in,
-                     [filter_type],
+                     [value_type],
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
                          scope.where(column_name => value)
                        }
                      }
             argument :not_in,
-                     [filter_type],
+                     [value_type],
                      prepare: lambda { |value, _context|
                        lambda { |scope, column_name|
                          scope.where.not(column_name => value)

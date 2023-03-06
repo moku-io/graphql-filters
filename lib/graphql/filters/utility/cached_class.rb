@@ -9,6 +9,8 @@ module GraphQL
         extend ActiveSupport::Concern
 
         included do
+          next unless is_a? Class
+
           class_attribute :cache,
                           default: Hash.new { |h, k|
                             h[k] = Class.new
@@ -48,6 +50,13 @@ module GraphQL
         private_constant :CacheClassConstructor
 
         class_methods do
+          # Pass this method the block that will be called on a cache miss. The block will receive the `key` that caused
+          #   the miss, and a class constructor `klass`. Use `klass.new` instead of `Class.new` to create the class that
+          #   you want to associate with `key` in the cache. This prevents loops in the case you reference the same key
+          #   during the definition of the class. Notice that the class is first created with `Class.new`, then it is
+          #   associated with `key` in the cache, and only then it is properly defined using `class_exec` and the block
+          #   you passed to `new`, so be careful about what assumptions you make on the classes you pull from the cache
+          #   during a cache miss resolution.
           def resolve_cache_miss &block
             cache.default_proc = proc do |h, k|
               class_constructor = CacheClassConstructor.new k, self
