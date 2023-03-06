@@ -14,6 +14,8 @@ module GraphQL
                  }
 
         class << self
+          alias inspect to_s
+
         private
 
           def resolve_pattern column_node, expression
