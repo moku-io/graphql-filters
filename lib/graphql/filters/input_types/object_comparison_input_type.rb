@@ -11,6 +11,12 @@ module GraphQL
           klass.new BaseComparisonInputType do
             graphql_name "#{value_type.graphql_name}ComplexFilterInput"
 
+            fields_comparison_input_type = FieldsComparisonInputType[value_type]
+
+            define_singleton_method :fields_comparison_input_type do
+              fields_comparison_input_type
+            end
+
             one_of
 
             argument :constant,
@@ -52,7 +58,7 @@ module GraphQL
                          scope.and(not_arg.call(scope.unscope(:where), association_name).invert_where)
                        }
                      }
-            argument :fields, FieldsComparisonInputType[value_type], required: false
+            argument :fields, fields_comparison_input_type, required: false
 
             def prepare
               values.sole
