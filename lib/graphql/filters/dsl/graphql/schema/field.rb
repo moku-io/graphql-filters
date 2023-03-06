@@ -18,9 +18,17 @@ monkey_patch = Module.new do
   end
 
   def initialize *args, filter: true, **kwargs, &block
-    super(*args, **kwargs, &block)
+    super(*args, **kwargs) do
+      filter filter
 
-    self.filter filter
+      next if block.nil?
+
+      if block.arity == 1
+        block.call self
+      else
+        instance_exec &block
+      end
+    end
   end
 
   def filter options={}, **kwargs
@@ -43,10 +51,9 @@ monkey_patch = Module.new do
       end
     end
 
-    kwargs.reverse_merge! applied_filter_options_defaults
-    kwargs.reverse_merge! options
-
-    filter_options.merge! kwargs
+    filter_options.reverse_merge! applied_filter_options_defaults
+    filter_options.reverse_merge! options
+    filter_options.reverse_merge! kwargs
   end
 
   def filter_options
