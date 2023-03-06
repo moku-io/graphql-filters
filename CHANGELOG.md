@@ -8,6 +8,6 @@
 ### Bug fixes
 )
 
-## 0.1.0 2023-02-03
+## 1.0.0 2023-03-06
 
-First release
+First release. Refer to [README.md](README.md) for the full documentation.
