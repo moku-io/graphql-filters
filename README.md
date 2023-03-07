@@ -9,7 +9,7 @@ This gem provides a module to include (or prepend, see below) in your resolvers 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'graphql-filters', '~> 0.1.0'
+gem 'graphql-filters', '~> 1.0'
 ```
 
 And then execute:
@@ -24,7 +24,7 @@ The easiest way to use GraphQL Filters is on top of [SearchObject](https://githu
 ```ruby
 class RoutesResolver < BaseResolver
   include SearchObject.module(:graphql)
-  
+
   scope { Route.all }
 
   type [RouteType], null: false
@@ -33,12 +33,12 @@ class RoutesResolver < BaseResolver
 end
 ```
 
-Otherwise, you have to explicitly define a `resolve` method and have it return an `ActiveRecord::Relation`; in this case youy need to prepend `GraphQL::Filters::Filterable` in the resolver, otherwise it won't have access to the starting scope:
+Otherwise, you have to explicitly define a `resolve` method and have it return an `ActiveRecord::Relation`; in this case you need to prepend `GraphQL::Filters::Filterable` in the resolver, otherwise it won't have access to the starting scope:
 
 ```ruby
 class RoutesResolver < BaseResolver
   type [RouteType], null: false
-  
+
   def resolve
     Route.all
   end
@@ -217,7 +217,7 @@ end
   Can be `true` or `false` (default: `true`). Controls whether or not the client can use this field in the filters. Passing `true` or `false` directly to `filter` is a shortcut:
 
 ```ruby
-field :name, String, null: false, filter: false 
+field :name, String, null: false, filter: false
 
 # is equivalent to
 
@@ -229,7 +229,7 @@ field :name, String, null: false, filter: {enabled: false}
   The name of the attribute that the field is tied to in the model. Defaults to the name of the resolver method for the field (which by default is the same as the name of the field itself).
 
 - `association_name`
-  
+
   The name of the Active Record association that the field is tied to in the model. Equivalent to `attribute_name`, has the same default.
 
 ## Plans for future development
