@@ -21,7 +21,7 @@ module GraphQL
                        required: false,
                        prepare: lambda { |field_comparator, _context|
                          lambda { |scope|
-                           if scope.klass.attribute_names.include? filter_options[:attribute_name]
+                           if scope.klass.attribute_names.include? filter_options[:attribute_name].to_s
                              field_comparator.call scope, filter_options[:attribute_name]
                            else
                              field_comparator.call scope, filter_options[:association_name]

@@ -43,21 +43,18 @@ monkey_patch = Module.new do
                 options
               end
 
-    applied_filter_options_defaults = filter_options_defaults.transform_values do |value|
+    filter_options.merge! options
+    filter_options.merge! kwargs
+  end
+
+  def filter_options
+    @filter_options ||= filter_options_defaults.transform_values do |value|
       if value.is_a? Proc
         value.call self
       else
         value
       end
     end
-
-    filter_options.reverse_merge! applied_filter_options_defaults
-    filter_options.reverse_merge! options
-    filter_options.reverse_merge! kwargs
-  end
-
-  def filter_options
-    @filter_options ||= {}
   end
 end
 
