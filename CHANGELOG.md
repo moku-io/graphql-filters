@@ -8,6 +8,12 @@
 ### Bug fixes
 )-->
 
+## 1.0.2 2023-07-24
+
+### Bug fixes
+
+- Fixed constant false conditions
+
 ## 1.0.1 2023-03-15
 
 ### Bug fixes
