@@ -26,7 +26,7 @@ module GraphQL
                          if value
                            scope.all
                          else
-                           scope.where false
+                           scope.none
                          end
                        }
                      }
