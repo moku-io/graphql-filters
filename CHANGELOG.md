@@ -1,12 +1,18 @@
 # Changelog
 
-[//]: # (
+<!--[//]: # (
 ## <Release number> <Date YYYY-MM-DD>
 ### Breaking changes
 ### Deprecations
 ### New features
 ### Bug fixes
-)
+)-->
+
+## 1.0.2 2023-07-24
+
+### Bug fixes
+
+- Fixed constant false conditions
 
 ## 1.0.1 2023-03-15
 
