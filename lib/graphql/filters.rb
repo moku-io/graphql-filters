@@ -1,6 +1,7 @@
 require 'active_support/configurable'
 require 'active_support/core_ext/module/delegation'
 require 'graphql'
+require 'models_connect'
 require_relative 'filters/version'
 require_relative 'filters/utility/cached_class'
 
@@ -20,7 +21,6 @@ end
 
 # These need to be here, after the definition of GraphQL::Filters
 
-require_relative 'models_connect'
 require_relative 'filters/activerecord_patch'
 require_relative 'filters/dsl'
 require_relative 'filters/filterable'
