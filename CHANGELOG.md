@@ -8,6 +8,13 @@
 ### Bug fixes
 )-->
 
+## 1.0.3 2024-10-09
+
+### Bug fixes
+
+- Made dependency to Rails more lax
+- Extracted the pairing of models and GraphQL types into [a separate gem](https://github.com/moku-io/graphql-models_connect)
+
 ## 1.0.2 2023-07-24
 
 ### Bug fixes
