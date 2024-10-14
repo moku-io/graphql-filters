@@ -1,7 +1,7 @@
 require 'active_support/configurable'
 require 'active_support/core_ext/module/delegation'
 require 'graphql'
-require 'models_connect'
+require 'graphql/models_connect'
 require_relative 'filters/version'
 require_relative 'filters/utility/cached_class'
 
