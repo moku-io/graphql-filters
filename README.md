@@ -47,6 +47,8 @@ class RoutesResolver < BaseResolver
 end
 ```
 
+By default the filters are based on the `type`. If you need them to be based on a different type (for example if the result will be wrapped in another object), you can declare it with `filtered_type`, which has the same API as `type`.
+
 Using either of these resolvers for a `routes` field will generate all the necessary input types to make a query like this:
 
 ```graphql
@@ -95,7 +97,7 @@ query {
 }
 ```
 
-Notice that eager loading is outside the scope of this gem, so if without anything else the above query will fall victim to the N+1 problem.
+Notice that eager loading is outside the scope of this gem, so without anything else the above query will fall victim to the N+1 problem.
 
 Each input type is generated based on the respective type: scalar and enum types allow for basic comparisons like equality and inclusion, while object types let you build complex queries that mix and match comparisons on their fields. List types let you make `any`, `all`, and `none` queries based on a nested filter. Support for null-checked filters is planned for future development.
 
