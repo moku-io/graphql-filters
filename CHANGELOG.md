@@ -8,6 +8,16 @@
 ### Bug fixes
 )-->
 
+## 1.0.4 2024-10-14
+
+### New features
+
+- Added `filtered_type` to declare a type for the filters which differs from the result type of the resolver.
+
+### Bug fixes
+
+- Fixed a broken `require`.
+
 ## 1.0.3 2024-10-09
 
 ### Bug fixes
