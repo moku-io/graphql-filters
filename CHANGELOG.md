@@ -8,6 +8,12 @@
 ### Bug fixes
 )-->
 
+## 1.0.5 2024-11-29
+
+### Bug fixes
+
+- Fixed an internal bug in resolution of the filtered type for a resolver.
+
 ## 1.0.4 2024-10-14
 
 ### New features
