@@ -33,9 +33,14 @@ module GraphQL
 
         argument :filter, inner_type.comparison_input_type, required: false
 
-        def resolve filter: nil, **kwargs
-          filter ? filter.call(super(**kwargs)) : super(**kwargs)
+        # Using the `def` raw here would redefine the method on the class that prepended the module, insted of inserting
+        #   it in the ancestor chain.
+        Module.new do
+          def resolve filter: nil, **kwargs
+            filter ? filter.call(super(**kwargs)) : super(**kwargs)
+          end
         end
+          .tap { prepend _1 }
       end
     end
   end
