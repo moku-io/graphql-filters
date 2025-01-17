@@ -12,7 +12,7 @@
 
 ### Bug fixes
 
-- Fix `NoMethodError` when using `Filterable` without `SearchObject` and not passing a filter.
+- Fixed `NoMethodError` when using `Filterable` without `SearchObject` and not passing a filter.
 
 ## 1.0.5 2024-11-29
 
