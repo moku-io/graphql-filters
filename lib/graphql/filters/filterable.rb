@@ -34,7 +34,7 @@ module GraphQL
         argument :filter, inner_type.comparison_input_type, required: false
 
         def resolve filter: nil, **kwargs
-          filter.call super(**kwargs)
+          filter ? filter.call(super(**kwargs)) : super(**kwargs)
         end
       end
     end
