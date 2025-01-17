@@ -8,6 +8,12 @@
 ### Bug fixes
 )-->
 
+## 1.0.7 2025-01-17
+
+### Bug fixes
+
+- Fixed `Filterable` redefining `resolve` instead of overriding it.
+
 ## 1.0.6 2025-01-17
 
 ### Bug fixes
