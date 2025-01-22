@@ -8,6 +8,12 @@
 ### Bug fixes
 )-->
 
+## 1.0.8 2025-01-22
+
+### Bug fixes
+
+- Explicitly declared the dependency from `ostruct`.
+
 ## 1.0.7 2025-01-17
 
 ### Bug fixes
