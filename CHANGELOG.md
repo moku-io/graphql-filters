@@ -8,6 +8,12 @@
 ### Bug fixes
 )-->
 
+## 1.1.0 2025-04-14
+
+### New features
+
+- Added integration with interfaces.
+
 ## 1.0.8 2025-01-22
 
 ### Bug fixes
