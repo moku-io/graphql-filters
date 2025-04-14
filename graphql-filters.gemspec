@@ -30,6 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activerecord'
   spec.add_dependency 'activesupport'
   spec.add_dependency 'graphql', '~> 2.0.0'
-  spec.add_dependency 'graphql-models_connect'
+  spec.add_dependency 'graphql-models_connect', '>= 1.1.0'
   spec.add_dependency 'ostruct'
 end
