@@ -8,6 +8,12 @@
 ### Bug fixes
 )-->
 
+## 1.1.1 2025-05-16
+
+### Bug fixes
+
+- Relaxed the constraint on the `graphql` gem. It doesn't use semantic versioning, so the constraint was useless.
+
 ## 1.1.0 2025-04-14
 
 ### New features
