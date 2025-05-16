@@ -8,6 +8,12 @@
 ### Bug fixes
 )-->
 
+## 1.1.2 2025-05-16
+
+### Bug fixes
+
+- Using `definition_methods` broke something in newer versions of the `graphql` gem. We now use `ActiveSupport::Concern`.
+
 ## 1.1.1 2025-05-16
 
 ### Bug fixes
