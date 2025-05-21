@@ -47,8 +47,6 @@ class RoutesResolver < BaseResolver
 end
 ```
 
-By default the filters are based on the `type`. If you need them to be based on a different type (for example if the result will be wrapped in another object), you can declare it with `filtered_type`, which has the same API as `type`.
-
 Using either of these resolvers for a `routes` field will generate all the necessary input types to make a query like this:
 
 ```graphql
@@ -233,6 +231,10 @@ field :name, String, null: false, filter: {enabled: false}
 - `association_name`
 
   The name of the Active Record association that the field is tied to in the model. Equivalent to `attribute_name`, has the same default.
+
+- `filtered_type`
+ 
+  The type the filters for this field need to be based on, if it's different from the field's own type (for example, a field thet returns a connection will need to be filtered based on the connection's node type). Can also be set calling the `filtered_type` on a resolver/mutation if the field is associated with one.
 
 ## Plans for future development
 
