@@ -13,7 +13,7 @@ module GraphQL
             object_type.fields.each_value do |field_object|
               next unless field_object.filter_options[:enabled]
 
-              type = field_object.type
+              type = field_object.filter_options[:filtered_type]
               filter_options = field_object.filter_options
 
               argument field_object.name,

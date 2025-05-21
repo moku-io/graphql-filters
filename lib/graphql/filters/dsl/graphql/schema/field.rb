@@ -13,7 +13,8 @@ monkey_patch = Module.new do
                     default: {
                       enabled:          true,
                       attribute_name:   :method_sym.to_proc,
-                      association_name: :method_sym.to_proc
+                      association_name: :method_sym.to_proc,
+                      filtered_type:    ->(field){field.resolver ? field.resolver.filtered_type : field.type}
                     }
   end
 
