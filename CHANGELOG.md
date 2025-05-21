@@ -8,6 +8,16 @@
 ### Bug fixes
 )-->
 
+## 1.1.3 2025-05-21
+
+### New features
+
+- Added the `filtered_type` field option.
+
+### Bug fixes
+
+- Ensured the arguments of a `ComparisonInput` are defined after all the fields of the respective object type have been defined. Before, some cases of circular references made certain arguments not get defined.
+
 ## 1.1.2 2025-05-16
 
 ### Bug fixes
