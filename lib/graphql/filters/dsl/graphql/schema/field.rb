@@ -14,7 +14,8 @@ monkey_patch = Module.new do
                       enabled:          true,
                       attribute_name:   :method_sym.to_proc,
                       association_name: :method_sym.to_proc,
-                      filtered_type:    ->(field){field.resolver ? field.resolver.filtered_type : field.type}
+                      filtered_type:    ->(field){field.resolver ? field.resolver.filtered_type : field.type},
+                      comparison_input_type: nil
                     }
   end
 

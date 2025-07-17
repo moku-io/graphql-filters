@@ -18,9 +18,10 @@ module GraphQL
                   next unless filter_options[:enabled]
 
                   type = filter_options[:filtered_type]
+                  comparison_input_type = filter_options[:comparison_input_type] || type.comparison_input_type
 
                   argument field_object.name,
-                           type.comparison_input_type,
+                           comparison_input_type,
                            required: false,
                            prepare: lambda { |field_comparator, _context|
                              lambda { |scope|
