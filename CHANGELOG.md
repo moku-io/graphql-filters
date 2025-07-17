@@ -8,6 +8,12 @@
 ### Bug fixes
 )-->
 
+## 1.1.4 2025-07-17
+
+### New features
+
+- Added the `comparison_input_type` field option. It is for internal use only and *not part of the public API documented in the [README](README.md)*. 
+
 ## 1.1.3 2025-05-21
 
 ### New features
