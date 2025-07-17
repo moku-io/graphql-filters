@@ -13,10 +13,11 @@ module GraphQL
             define_singleton_method :own_arguments do |*args, **kwargs, &block|
               unless @loaded_fields_arguments
                 object_type.fields.each_value do |field_object|
-                  next unless field_object.filter_options[:enabled]
-
-                  type = field_object.filter_options[:filtered_type]
                   filter_options = field_object.filter_options
+
+                  next unless filter_options[:enabled]
+
+                  type = filter_options[:filtered_type]
 
                   argument field_object.name,
                            type.comparison_input_type,
